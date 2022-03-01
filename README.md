@@ -1,7 +1,9 @@
 # **Java Doodle Duels** 
 
-## **Concept**
-- Create a web based Pokemon style fighting game using the Dungeon & Dragons stat system, with custom abilities to match each of the different stat types, with increasing power as the abilities. 
+## **Description** 
+Java Doodle Duels is a web based character battler application made in Java Spring by the Cup of Java team at Revature. Using Azure SQL and Spring Data we will be able to hold any doodle duelers created by our users. These duelers will have a full stat breakdowns based on the classic six Dungeon & Dragons stats, which will determine the maximum Life Points, Ability Points, and Skills the dueler can use. 
+
+----------------
 
 # **Doodle of Doodle Duels**
 ![Concept Home Page](https://cdn.discordapp.com/attachments/941454669841063996/948234416491233310/home.JPG)
@@ -24,3 +26,11 @@
 - Bonus Features:
     1. Possible PvP duels
     2. Chat box for a maximum gameplay experience
+
+## Contributors
+- Brandon Clark
+- Austin Blandford
+- Jacob Sotto
+- Andrew Snyder 
+- Lamar Lewis
+- Robert Lavoie
