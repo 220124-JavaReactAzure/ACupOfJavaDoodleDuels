@@ -13,9 +13,9 @@ import com.revature.JavaDoodleDuels.services.UserService;
 @RequestMapping("/employeeFunctions")
 public class EmployeeFunctionsServlet {
 	
-private final UserService userService;
-private final DuelerService duelerService;
-private final SkillService skillService;
+	private final UserService userService;
+	private final DuelerService duelerService;
+	private final SkillService skillService;
 	
 	@Autowired
 	public EmployeeFunctionsServlet(UserService userService, DuelerService duelerService, SkillService skillService) {

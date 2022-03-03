@@ -39,6 +39,12 @@ public class Dueler {
 	@Column
 	private int charisma;
 	
+	@Column(name="max_health")
+	private int maxHealth;
+	
+	@Column(name="max_mana")
+	private int maxMana;
+	
 	@Column(name="skill_one")
 	private String skillOne;  // used to call skill table
 	
@@ -56,7 +62,7 @@ public class Dueler {
 	}
 	
 	public Dueler(String duelerName, long accountNumer, String duelerImage, int strength, int dexterity,
-			int constitution, int wisdom, int intelligence, int charisma, String skillOne, String skillTwo,
+			int constitution, int wisdom, int intelligence, int charisma, int maxHealth, int maxMana, String skillOne, String skillTwo,
 			String skillThree, boolean isDummy) {
 		super();
 		this.duelerName = duelerName;
@@ -68,6 +74,8 @@ public class Dueler {
 		this.wisdom = wisdom;
 		this.intelligence = intelligence;
 		this.charisma = charisma;
+		this.maxHealth = maxHealth;
+		this.maxMana = maxMana;
 		this.skillOne = skillOne;
 		this.skillTwo = skillTwo;
 		this.skillThree = skillThree;
@@ -144,6 +152,22 @@ public class Dueler {
 
 	public void setCharisma(int charisma) {
 		this.charisma = charisma;
+	}
+
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
+	}
+
+	public int getMaxMana() {
+		return maxMana;
+	}
+
+	public void setMaxMana(int maxMana) {
+		this.maxMana = maxMana;
 	}
 
 	public String getSkillOne() {
