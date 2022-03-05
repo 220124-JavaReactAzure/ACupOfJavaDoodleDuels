@@ -37,9 +37,5 @@ public class LoginCredentials {
 		return Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 	
-	
-	
-	
-	
 }
-}
+

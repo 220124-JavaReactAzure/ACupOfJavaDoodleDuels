@@ -1,67 +1,31 @@
-package com.revature.JavaDoodleDuels.models;
+package com.revature.JavaDoodleDuels.web.dto;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="dueler_info")
-public class Dueler {
+public class DuelerRequest {
 	
-	@Id
-	@Column(name="dueler_name")
 	private String duelerName;
-	
-	@Column(name="account_number")
 	private long accountNumber;   // used to get called by user
-	
-	@Column(name="dueler_image")
 	private String duelerImage;   // not sure if this will work
-	
-	@Column
 	private int strength;
-	
-	@Column
 	private int dexterity;
-	
-	@Column
 	private int constitution;
-	
-	@Column
 	private int wisdom;
-	
-	@Column
 	private int intelligence;
-	
-	@Column
 	private int charisma;
-	
-	@Column(name="max_health")
 	private int maxHealth;
-	
-	@Column(name="max_mana")
 	private int maxMana;
-	
-	@Column(name="skill_one")
 	private String skillOne;  // used to call skill table
-	
-	@Column(name="skill_two")
 	private String skillTwo;  // used to call skill table
-	
-	@Column(name="skill_three")
 	private String skillThree;  // used to call skill table
-	
-	@Column(name="is_dummy")
 	private boolean isDummy; // used to create a pool of dummies to battle against, default is false
 
-	public Dueler() {
+	public DuelerRequest() {
 		super();
 	}
 	
-	public Dueler(String duelerName, long accountNumber, String duelerImage, int strength, int dexterity,
+	public DuelerRequest(String duelerName, long accountNumber, String duelerImage, int strength, int dexterity,
 			int constitution, int wisdom, int intelligence, int charisma, int maxHealth, int maxMana, String skillOne, String skillTwo,
 			String skillThree, boolean isDummy) {
 		super();
@@ -204,7 +168,7 @@ public class Dueler {
 
 	@Override
 	public String toString() {
-		return "Dueler [duelerName=" + duelerName + ", accountNumber=" + accountNumber + ", duelerImage=" + duelerImage
+		return "DuelerRequest [duelerName=" + duelerName + ", accountNumber=" + accountNumber + ", duelerImage=" + duelerImage
 				+ ", strength=" + strength + ", dexterity=" + dexterity + ", constitution=" + constitution + ", wisdom="
 				+ wisdom + ", intelligence=" + intelligence + ", charisma=" + charisma + ", skillOne=" + skillOne
 				+ ", skillTwo=" + skillTwo + ", skillThree=" + skillThree + ", isDummy=" + isDummy + "]";
@@ -224,7 +188,7 @@ public class Dueler {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Dueler other = (Dueler) obj;
+		DuelerRequest other = (DuelerRequest) obj;
 		return accountNumber == other.accountNumber && charisma == other.charisma && constitution == other.constitution
 				&& dexterity == other.dexterity && Objects.equals(duelerImage, other.duelerImage)
 				&& Objects.equals(duelerName, other.duelerName) && intelligence == other.intelligence
@@ -233,5 +197,6 @@ public class Dueler {
 				&& strength == other.strength && wisdom == other.wisdom;
 	}
 
-	
+
+
 }

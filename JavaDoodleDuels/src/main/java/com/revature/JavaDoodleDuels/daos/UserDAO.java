@@ -10,6 +10,6 @@ import com.revature.JavaDoodleDuels.models.User;
 @Repository
 public interface UserDAO extends CrudRepository<User, String> {
 
-	Optional<User> findUserbyUsername(String username);
-	Optional<User> findUserbyEmail(String email);
+	//Optional<User> findUserbyUsername(String username);
+	//<User> findUserbyEmail(String email);
 }
