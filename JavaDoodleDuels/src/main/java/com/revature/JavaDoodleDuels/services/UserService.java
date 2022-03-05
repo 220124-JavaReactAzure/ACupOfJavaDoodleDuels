@@ -8,7 +8,11 @@ import com.revature.JavaDoodleDuels.daos.UserDAO;
 @Service
 public class UserService {
 
-	private final UserDAO userDAO;
+	private UserDAO userDAO;
+	
+	public UserService() {
+		
+	}
 	
 	@Autowired
 	public UserService(UserDAO userDAO) {
