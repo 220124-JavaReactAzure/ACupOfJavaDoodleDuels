@@ -9,16 +9,24 @@
         text-transform: uppercase;
         text-align: center;
     }
-    main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 75vh;
-    width: 100%;
-    background: url(https://media.discordapp.net/attachments/946784294473453628/949047219577827348/homeback.jpeg) no-repeat center center;
-    background-size: cover;
-}
-   
+    body{
+        background-image: url("https://media.discordapp.net/attachments/946784294473453628/949047219577827348/homeback.jpeg"); 
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%; 
+    }
+    html {
+         height: 100%
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
     .form_class {
         width: 500px;
         padding: 40px;

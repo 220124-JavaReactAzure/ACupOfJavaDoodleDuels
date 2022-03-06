@@ -1,4 +1,4 @@
-package com.revature.JavaDoodleDuels.dto;
+package com.revature.JavaDoodleDuels.web.dto;
 
 import java.util.Objects;
 import javax.validation.constraints.Email;
@@ -23,20 +23,36 @@ public class UserRequest {
 	@Pattern(regexp ="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
 			message="Passwords must have a minimum of 8 characters, one number, one letter and one special character")
 	private String password;
+	
+	private int accountType;
+	
+	private String employeeCode;
+	
+	private String currentDuelerName;
 
 	public UserRequest() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserRequest(String firstName, String lastName, String email, String username, String password) {
+	
+
+	public UserRequest(@NotBlank String firstName, @NotBlank String lastName, @Email String email,
+			@Size(min = 4, max = 20) String username,
+			@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "Passwords must have a minimum of 8 characters, one number, one letter and one special character") String password,
+			int accountType, String employeeCode, String currentDuelerName) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.accountType = accountType;
+		this.employeeCode = employeeCode;
+		this.currentDuelerName = currentDuelerName;
 	}
+
+
 
 	public String getFirstName() {
 		return firstName;
@@ -78,10 +94,60 @@ public class UserRequest {
 		this.password = password;
 	}
 
+
+
+	public int getAccountType() {
+		return accountType;
+	}
+
+
+
+	public void setAccountType(int accountType) {
+		this.accountType = accountType;
+	}
+
+
+
+	public String getEmployeeCode() {
+		return employeeCode;
+	}
+
+
+
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
+	}
+
+
+
+	public String getCurrentDuelerName() {
+		return currentDuelerName;
+	}
+
+
+
+	public void setCurrentDuelerName(String currentDuelerName) {
+		this.currentDuelerName = currentDuelerName;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "UserRequest [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", username="
+				+ username + ", password=" + password + ", accountType=" + accountType + ", employeeCode="
+				+ employeeCode + ", currentDuelerName=" + currentDuelerName + "]";
+	}
+
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, firstName, lastName, password, username);
+		return Objects.hash(accountType, currentDuelerName, email, employeeCode, firstName, lastName, password,
+				username);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -92,16 +158,12 @@ public class UserRequest {
 		if (getClass() != obj.getClass())
 			return false;
 		UserRequest other = (UserRequest) obj;
-		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& Objects.equals(username, other.username);
+		return accountType == other.accountType && Objects.equals(currentDuelerName, other.currentDuelerName)
+				&& Objects.equals(email, other.email) && Objects.equals(employeeCode, other.employeeCode)
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 
-	@Override
-	public String toString() {
-		return "UserRequest [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + "]";
-	}
 
 }
 

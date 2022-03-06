@@ -12,6 +12,6 @@ import com.revature.JavaDoodleDuels.models.Dueler;
 @Repository
 public interface DuelerDAO extends CrudRepository<Dueler, String> {
 
-	//Dueler findDuelerName(String duelerName);
+	Optional<Dueler> findDuelerByDuelerName(String duelerName);
 
 }
