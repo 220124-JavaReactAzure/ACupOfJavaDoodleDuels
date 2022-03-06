@@ -50,10 +50,10 @@ public class DuelerService {
 		
 	}
 
-	//public boolean isDuelerNameAvailable(String duelerName) {
+	public boolean isDuelerNameAvailable(String duelerName) {
 		
-		//return duelerDAO.findDuelerName(duelerName).isEmpty();
-	//}
+		return duelerDAO.findDuelerByDuelerName(duelerName).isEmpty();
+	}
 	
 
 	

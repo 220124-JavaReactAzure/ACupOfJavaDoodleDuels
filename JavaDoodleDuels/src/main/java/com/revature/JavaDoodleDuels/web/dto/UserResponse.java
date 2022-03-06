@@ -1,4 +1,4 @@
-package com.revature.JavaDoodleDuels.dto;
+package com.revature.JavaDoodleDuels.web.dto;
 
 import java.util.Objects;
 
