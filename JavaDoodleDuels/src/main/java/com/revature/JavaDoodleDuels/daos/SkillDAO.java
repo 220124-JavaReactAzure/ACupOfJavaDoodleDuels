@@ -10,6 +10,6 @@ import com.revature.JavaDoodleDuels.models.Skill;
 
 @Repository
 public interface SkillDAO extends CrudRepository<Skill, String> {
-
+	Optional<Skill> findSkillBySkillName(String skillName);
 	List<Skill> findAll();
 }

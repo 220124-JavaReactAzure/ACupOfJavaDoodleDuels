@@ -108,4 +108,10 @@ public class UserService {
 	public boolean isUsernameAvailable(String username) {
 		return userDAO.findUserByUsername(username).isEmpty();
 	}
+	
+	@Transactional
+	public void removeUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		userDAO.deleteById(username);
+	}
 }
