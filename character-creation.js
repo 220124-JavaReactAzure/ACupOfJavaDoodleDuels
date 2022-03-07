@@ -40,7 +40,18 @@ document.getElementById("character-img").onchange = evt => {
         document.getElementById("previewImg").src = URL.createObjectURL(file);
         document.getElementById("previewImg").style.display = "block";
         console.log(file);
-        blobImage = URL.createObjectURL(file, {type: "image/png"});
+        const formdata = new FormData()
+        formdata.append("image", file)
+        fetch("https://api.imgur.com/3/image/", {
+                method: "post",
+                headers: {
+                    Authorization: "Client-ID ac8deb7f4d99ebb"
+                },
+                body: formdata
+            }).then(data => data.json()).then(data => {
+                blobImage = data.data.link
+                console.log(blobImage);
+            })
         console.log(blobImage);
     }
   }
@@ -63,7 +74,7 @@ function postDueler(){
 	    skillThree: document.getElementById("skillThree").value, 
 	    isDummy: false
     }  
-
+    console.log(data);
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',

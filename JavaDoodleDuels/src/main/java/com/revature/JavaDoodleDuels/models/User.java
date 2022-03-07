@@ -49,6 +49,19 @@ public class User{
 	}
 
 	public User(String username, String firstName, String lastName, String email, String password, int accountType,
+			String employeeCode, String currentDuelerName) {
+		super();
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.accountType = accountType;
+		this.employeeCode = employeeCode;
+		this.currentDuelerName = currentDuelerName;
+	}
+
+	public User(String username, String firstName, String lastName, String email, String password, int accountType,
 			String employeeCode, long accountNumber, String currentDuelerName) {
 		super();
 		this.username = username;
