@@ -53,7 +53,6 @@ public class UserService {
 
 	
 	@Transactional
-
 	public boolean isEmailAvailable(String email) {
 		return !(userDAO.findUserByEmail(email).isPresent());
 	}
@@ -62,7 +61,6 @@ public class UserService {
 	public boolean isUsernameAvailable(String username) {
 		return !(userDAO.findUserByUsername(username).isPresent());
 	}
-
 	
 	@Transactional
 	public void removeUserByUsername(String username) {
