@@ -1,6 +1,7 @@
 package com.revature.JavaDoodleDuels.models;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -13,8 +14,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="user_info")
-public class User{
+public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 914598698529405186L;
+
 	@Id
 	@Column(nullable = false)
 	private String username;
@@ -38,8 +44,7 @@ public class User{
 	private String employeeCode;  // this is only used for account type 1-employee, if an account type 2-user is created it defaults to ""
 	
 	@Column(name="account_number")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long accountNumber;  // this will link accounts to duelers
+	private String accountNumber;  // this will link accounts to duelers
 	
 	@Column(name="current_dueler_name")
 	private String currentDuelerName;  // name of current dueler to pull from DB for a battle
@@ -49,7 +54,20 @@ public class User{
 	}
 
 	public User(String username, String firstName, String lastName, String email, String password, int accountType,
-			String employeeCode, long accountNumber, String currentDuelerName) {
+			String employeeCode, String currentDuelerName) {
+		super();
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.accountType = accountType;
+		this.employeeCode = employeeCode;
+		this.currentDuelerName = currentDuelerName;
+	}
+
+	public User(String username, String firstName, String lastName, String email, String password, int accountType,
+			String employeeCode, String accountNumber, String currentDuelerName) {
 		super();
 		this.username = username;
 		this.firstName = firstName;
@@ -118,11 +136,11 @@ public class User{
 		this.employeeCode = employeeCode;
 	}
 
-	public long getAccountNumber() {
+	public String getAccountNumber() {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(long accountNumber) {
+	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 

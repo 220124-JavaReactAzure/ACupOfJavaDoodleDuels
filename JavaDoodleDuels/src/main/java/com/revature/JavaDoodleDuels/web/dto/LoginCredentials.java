@@ -1,4 +1,4 @@
-package com.revature.JavaDoodleDuels.dto;
+package com.revature.JavaDoodleDuels.web.dto;
 
 import java.util.Objects;
 
@@ -37,9 +37,5 @@ public class LoginCredentials {
 		return Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 	
-	
-	
-	
-	
 }
-}
+

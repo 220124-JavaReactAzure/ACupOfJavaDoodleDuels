@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<HTML>
+<head>
+    <link rel="stylesheet" href="loginstyles.css">
+  </head>
+
+<body>
+   
+    <main>
+        <form id="login_form" class="form_class" action="" method="post">
+            <div class="form_div">
+                <label>Login:</label>
+                <input id="username" class="field_class" name="login_txt" type="text" placeholder="enter username" autofocus>
+                <label>Password:</label>
+                <input id="pass" class="field_class" name="password_txt" type="password" placeholder="enter password">
+                <div id="submit" value="login" onclick="login()">ENTER THE RING</div>
+                  <div id="submit" value="registration" onclick="registration()">REGISTER</div>
+                  <div onclick="window.location.href = 'https://javadoodleduels.blob.core.windows.net/$web/registration.html';"></div>
+            </div>
+           
+        </form>
+    </main>
+    <script src="login.js"></script>
+</body>
+</HTML>
