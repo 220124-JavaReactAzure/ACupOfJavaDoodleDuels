@@ -1,6 +1,8 @@
 package com.revature.JavaDoodleDuels.web.servlets;
 
-import javax.validation.Valid;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,20 +10,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.revature.JavaDoodleDuels.models.Dueler;
+import com.revature.JavaDoodleDuels.models.Skill;
+import com.revature.JavaDoodleDuels.models.User;
 import com.revature.JavaDoodleDuels.services.DuelerService;
 import com.revature.JavaDoodleDuels.services.SkillService;
 import com.revature.JavaDoodleDuels.services.UserService;
 import com.revature.JavaDoodleDuels.web.dto.DuelerRequest;
+import com.revature.JavaDoodleDuels.web.dto.DuelerResponse;
+import com.revature.JavaDoodleDuels.web.dto.SelectDuelerRequest;
 
 @RestController
-//@RequestMapping("/createDueler")
 public class CreateDuelerServlet {
 
 	private final UserService userService;
@@ -36,21 +39,38 @@ public class CreateDuelerServlet {
 	}
 	
 	@GetMapping("/createDueler")
-	public String duelerSkills() {
-		return "Yo";
-//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//		return gson.toJson(skillService.getAllSkills());
+	public String duelerSkills(HttpSession httpSession) {
+		User currentUser = (User) httpSession.getAttribute("authUser");
+		List<Skill> allSkills = skillService.getAllSkills();
+		DuelerResponse duelerResponse = new DuelerResponse(currentUser.getAccountNumber(), allSkills);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		return gson.toJson(duelerResponse);
 	}
 	
 	@PostMapping("/createDueler")
-	@ResponseStatus(HttpStatus.CREATED)
-	public void createDueler(@RequestBody DuelerRequest duelerRequest) {
-		duelerService.registerNewDueler(duelerRequest);
+	public ResponseEntity<Void> createDueler(@RequestBody DuelerRequest duelerRequest) {
+		if(duelerService.isDuelerNameAvailable(duelerRequest.getDuelerName())) {
+			duelerService.registerNewDueler(duelerRequest);
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		}else {
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
+		}
 	}
 	
-//	@GetMapping("/checkDuelerName")
-//	public ResponseEntity<Void> checkDuelerName(@RequestParam String duelerName){
-//		return duelerService.isDuelerNameAvailable(duelerName) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.CONFLICT);
-//	}
+	@GetMapping("/viewDuelers")
+	public String viewDuelers(HttpSession httpSession) {
+		User currentUser = (User) httpSession.getAttribute("authUser");
+		List<Dueler> yourDuelers = duelerService.getDuelerByAccountNumber(currentUser.getAccountNumber());
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		return gson.toJson(yourDuelers);
+	}
 	
+	@PostMapping("/viewDuelers")
+	public ResponseEntity<Void> selectDueler(@RequestBody SelectDuelerRequest selectDuelerRequest, HttpSession httpSession){
+		User currentUser = (User) httpSession.getAttribute("authUser");
+		currentUser.setCurrentDuelerName(selectDuelerRequest.getDuelerName());
+		userService.updateDueler(currentUser);
+		httpSession.setAttribute("authUser", currentUser);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
 }

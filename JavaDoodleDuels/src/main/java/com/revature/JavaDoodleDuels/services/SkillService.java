@@ -36,7 +36,7 @@ public class SkillService {
 				addSkillRequest.getScaledDamage(),
 				addSkillRequest.getScalingRequirement(),
 				addSkillRequest.getDescription(),
-				addSkillRequest.isHealing(),
+				addSkillRequest.getHealing(),
 				addSkillRequest.getManaCost()
 				);
 		Skill persistedSkill = skillDAO.save(newSkill);
@@ -60,6 +60,11 @@ public class SkillService {
 	@Transactional
 	public void removeSkillByName(String skillName) {
 		skillDAO.deleteById(skillName);
+	}
+
+	@Transactional
+	public Skill findSkillBySkillName(String skillName) {
+		return skillDAO.findSkillBySkillName(skillName).orElse(null);
 	}
 
 	
