@@ -1,5 +1,7 @@
 package com.revature.JavaDoodleDuels.services;
 
+import java.util.List;
+
 import javax.persistence.PersistenceException;
 import javax.validation.Valid;
 
@@ -66,6 +68,11 @@ public class DuelerService {
 		log.info("Checking is dueler is available....");
 		return duelerDAO.findDuelerByDuelerName(duelerName).isEmpty();
 	}
+	
+	@Transactional
+	public Dueler findDuelerByName(String duelerName) {
+		return duelerDAO.findDuelerByDuelerName(duelerName).orElse(null);
+	}
 
 	@Transactional
 	public void removeDuelerByName(String duelerName) {
@@ -81,12 +88,30 @@ public class DuelerService {
 		log.info("dummy dueler created...");
 	}
 
+	@Transactional
 	public void removeDummyByName(String duelerName) {
 		Dueler newDummy = duelerDAO.findDuelerByDuelerName(duelerName).orElse(null);
 		newDummy.setDummy(false);
 		duelerDAO.save(newDummy);
 		log.info("Dummy removed using name token...");
 	}
+
+	@Transactional
+	public List<Dueler> findFiveRandomDuelers() {
+		return duelerDAO.findFiveRandomDuelers();
+	}
+
+	@Transactional
+	public List<Dueler> getDuelerByAccountNumber(String accountNum) {
+		return duelerDAO.findDuelerByAccountNumber(accountNum);
+		
+	}
+
+	@Transactional
+	public Dueler findRandomDummy() {
+		return duelerDAO.findRandomDummy();
+	}
+	
 	
 
 	

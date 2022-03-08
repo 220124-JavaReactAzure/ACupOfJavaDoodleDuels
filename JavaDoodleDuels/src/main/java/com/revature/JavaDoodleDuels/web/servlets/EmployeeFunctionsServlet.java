@@ -21,7 +21,6 @@ import com.revature.JavaDoodleDuels.web.dto.RemoveUserRequest;
 import com.revature.JavaDoodleDuels.web.dto.addDummyRequest;
 
 @RestController
-@RequestMapping("/employeeFunctions")
 public class EmployeeFunctionsServlet {
 	private final static Logger  log = LogManager.getFormatterLogger();
 
