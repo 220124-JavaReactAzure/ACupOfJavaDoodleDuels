@@ -1,5 +1,6 @@
 package com.revature.JavaDoodleDuels.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,7 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="skills")
-public class Skill {
+public class Skill implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6302328805745579720L;
 
 	@Id
 	@Column(name="skill_name", nullable = false)
@@ -30,8 +36,8 @@ public class Skill {
 	@Column(nullable = false)
 	private String description;
 	
-	@Column(name="is_healing")
-	private boolean isHealing;
+	@Column(name="healing")
+	private int healing;
 	
 	@Column(name="mana_cost")
 	private int manaCost;
@@ -41,7 +47,7 @@ public class Skill {
 	}
 
 	public Skill(String skillName, int damage, String damageStatType, int scaledDamage, int scalingRequirement,
-			String description, boolean isHealing, int manaCost) {
+			String description, int healing, int manaCost) {
 		super();
 		this.skillName = skillName;
 		this.damage = damage;
@@ -49,7 +55,7 @@ public class Skill {
 		this.scaledDamage = scaledDamage;
 		this.scalingRequirement = scalingRequirement;
 		this.description = description;
-		this.isHealing = isHealing;
+		this.healing = healing;
 		this.manaCost = manaCost;
 	}
 
@@ -101,12 +107,12 @@ public class Skill {
 		this.description = description;
 	}
 
-	public boolean isHealing() {
-		return isHealing;
+	public int getHealing() {
+		return healing;
 	}
 
-	public void setHealing(boolean isHealing) {
-		this.isHealing = isHealing;
+	public void setHealing(int healing) {
+		this.healing = healing;
 	}
 
 	public int getManaCost() {
@@ -121,12 +127,12 @@ public class Skill {
 	public String toString() {
 		return "Skill [skillName=" + skillName + ", damage=" + damage + ", damageStatType=" + damageStatType
 				+ ", scaledDamage=" + scaledDamage + ", scalingRequirement=" + scalingRequirement + ", description="
-				+ description + ", isHealing=" + isHealing + ", manaCost=" + manaCost + "]";
+				+ description + ", isHealing=" + healing + ", manaCost=" + manaCost + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(damage, damageStatType, description, isHealing, manaCost, scaledDamage, scalingRequirement,
+		return Objects.hash(damage, damageStatType, description, healing, manaCost, scaledDamage, scalingRequirement,
 				skillName);
 	}
 
@@ -140,7 +146,7 @@ public class Skill {
 			return false;
 		Skill other = (Skill) obj;
 		return damage == other.damage && Objects.equals(damageStatType, other.damageStatType)
-				&& Objects.equals(description, other.description) && isHealing == other.isHealing
+				&& Objects.equals(description, other.description) && healing == other.healing
 				&& manaCost == other.manaCost && scaledDamage == other.scaledDamage
 				&& scalingRequirement == other.scalingRequirement && Objects.equals(skillName, other.skillName);
 	}

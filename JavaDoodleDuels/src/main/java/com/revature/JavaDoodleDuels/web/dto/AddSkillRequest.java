@@ -2,7 +2,6 @@ package com.revature.JavaDoodleDuels.web.dto;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
 
 public class AddSkillRequest {
 	
@@ -12,13 +11,15 @@ public class AddSkillRequest {
 	private int scaledDamage; 
 	private int scalingRequirement; 
 	private String description;
-	private boolean isHealing;
+	private int healing;
 	private int manaCost;
+	
 	public AddSkillRequest() {
 		super();
 	}
+	
 	public AddSkillRequest(String skillName, int damage, String damageStatType, int scaledDamage,
-			int scalingRequirement, String description, boolean isHealing, int manaCost) {
+			int scalingRequirement, String description, int healing, int manaCost) {
 		super();
 		this.skillName = skillName;
 		this.damage = damage;
@@ -26,7 +27,7 @@ public class AddSkillRequest {
 		this.scaledDamage = scaledDamage;
 		this.scalingRequirement = scalingRequirement;
 		this.description = description;
-		this.isHealing = isHealing;
+		this.healing = healing;
 		this.manaCost = manaCost;
 	}
 	public String getSkillName() {
@@ -65,11 +66,11 @@ public class AddSkillRequest {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public boolean isHealing() {
-		return isHealing;
+	public int getHealing() {
+		return healing;
 	}
-	public void setHealing(boolean isHealing) {
-		this.isHealing = isHealing;
+	public void setHealing(int healing) {
+		this.healing = healing;
 	}
 	public int getManaCost() {
 		return manaCost;
@@ -81,11 +82,11 @@ public class AddSkillRequest {
 	public String toString() {
 		return "AddSkillRequest [skillName=" + skillName + ", damage=" + damage + ", damageStatType=" + damageStatType
 				+ ", scaledDamage=" + scaledDamage + ", scalingRequirement=" + scalingRequirement + ", description="
-				+ description + ", isHealing=" + isHealing + ", manaCost=" + manaCost + "]";
+				+ description + ", isHealing=" + healing + ", manaCost=" + manaCost + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(damage, damageStatType, description, isHealing, manaCost, scaledDamage, scalingRequirement,
+		return Objects.hash(damage, damageStatType, description, healing, manaCost, scaledDamage, scalingRequirement,
 				skillName);
 	}
 	@Override
@@ -98,7 +99,7 @@ public class AddSkillRequest {
 			return false;
 		AddSkillRequest other = (AddSkillRequest) obj;
 		return damage == other.damage && Objects.equals(damageStatType, other.damageStatType)
-				&& Objects.equals(description, other.description) && isHealing == other.isHealing
+				&& Objects.equals(description, other.description) && healing == other.healing
 				&& manaCost == other.manaCost && scaledDamage == other.scaledDamage
 				&& scalingRequirement == other.scalingRequirement && Objects.equals(skillName, other.skillName);
 	}

@@ -1,5 +1,6 @@
 package com.revature.JavaDoodleDuels.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,14 +10,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="dueler_info")
-public class Dueler {
+public class Dueler implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6483224865362138449L;
+
 	@Id
 	@Column(name="dueler_name")
 	private String duelerName;
 	
 	@Column(name="account_number")
-	private long accountNumber;   // used to get called by user
+	private String accountNumber;   // used to get called by user
 	
 	@Column(name="dueler_image")
 	private String duelerImage;   // not sure if this will work
@@ -61,7 +67,7 @@ public class Dueler {
 		super();
 	}
 	
-	public Dueler(String duelerName, long accountNumber, String duelerImage, int strength, int dexterity,
+	public Dueler(String duelerName, String accountNumber, String duelerImage, int strength, int dexterity,
 			int constitution, int wisdom, int intelligence, int charisma, int maxHealth, int maxMana, String skillOne, String skillTwo,
 			String skillThree, boolean isDummy) {
 		super();
@@ -90,11 +96,11 @@ public class Dueler {
 		this.duelerName = duelerName;
 	}
 
-	public long getAccountNumber() {
+	public String getAccountNumber() {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(long accountNumber) {
+	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 

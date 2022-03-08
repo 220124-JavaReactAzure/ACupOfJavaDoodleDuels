@@ -6,7 +6,7 @@ import java.util.Objects;
 public class DuelerRequest {
 	
 	private String duelerName;
-	private long accountNumber;   // used to get called by user
+	private String accountNumber;   // used to get called by user
 	private String duelerImage;   // not sure if this will work
 	private int strength;
 	private int dexterity;
@@ -25,7 +25,7 @@ public class DuelerRequest {
 		super();
 	}
 	
-	public DuelerRequest(String duelerName, long accountNumber, String duelerImage, int strength, int dexterity,
+	public DuelerRequest(String duelerName, String accountNumber, String duelerImage, int strength, int dexterity,
 			int constitution, int wisdom, int intelligence, int charisma, int maxHealth, int maxMana, String skillOne, String skillTwo,
 			String skillThree, boolean isDummy) {
 		super();
@@ -54,11 +54,11 @@ public class DuelerRequest {
 		this.duelerName = duelerName;
 	}
 
-	public long getAccountNumber() {
+	public String getAccountNumber() {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(long accountNumber) {
+	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
