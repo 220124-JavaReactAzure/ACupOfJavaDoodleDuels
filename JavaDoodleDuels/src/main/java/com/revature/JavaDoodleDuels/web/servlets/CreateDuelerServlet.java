@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,8 @@ import com.revature.JavaDoodleDuels.web.dto.SelectDuelerRequest;
 
 @RestController
 public class CreateDuelerServlet {
+	private final static Logger  log = LogManager.getFormatterLogger();
+
 
 	private final UserService userService;
 	private final DuelerService duelerService;
@@ -48,6 +52,12 @@ public class CreateDuelerServlet {
 	}
 	
 	@PostMapping("/createDueler")
+<<<<<<< HEAD
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createDueler(@RequestBody DuelerRequest duelerRequest) {
+		duelerService.registerNewDueler(duelerRequest);
+		log.info("Dueler servlet started...");
+=======
 	public ResponseEntity<Void> createDueler(@RequestBody DuelerRequest duelerRequest) {
 		if(duelerService.isDuelerNameAvailable(duelerRequest.getDuelerName())) {
 			duelerService.registerNewDueler(duelerRequest);
@@ -55,6 +65,7 @@ public class CreateDuelerServlet {
 		}else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
+>>>>>>> 33209367e97eacbe08db940f09ecd29f4d82c1c5
 	}
 	
 	@GetMapping("/viewDuelers")

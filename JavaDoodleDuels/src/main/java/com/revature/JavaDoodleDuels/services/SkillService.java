@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.PersistenceException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,9 @@ import com.revature.JavaDoodleDuels.web.dto.AddSkillRequest;
 
 @Service
 public class SkillService {
+	
+	private final static Logger  log = LogManager.getFormatterLogger();
+
 	
 	private SkillDAO skillDAO;
 	
@@ -29,6 +34,7 @@ public class SkillService {
 	
 	@Transactional
 	public void registerNewSkill(AddSkillRequest addSkillRequest) {
+		log.info("Registering a new skill...");
 		Skill newSkill = new Skill(
 				addSkillRequest.getSkillName(),
 				addSkillRequest.getDamage(),
@@ -42,8 +48,10 @@ public class SkillService {
 		Skill persistedSkill = skillDAO.save(newSkill);
 		
 		if(persistedSkill == null) {
+			log.error("Could not create new skill, problem persisting to database...");
 			throw new PersistenceException("The skill could not be persisted");
 		}
+		log.info("new skill created...");
 		
 	}
 	
@@ -60,6 +68,7 @@ public class SkillService {
 	@Transactional
 	public void removeSkillByName(String skillName) {
 		skillDAO.deleteById(skillName);
+		log.info("skill"+skillName+" removed...");
 	}
 
 	@Transactional

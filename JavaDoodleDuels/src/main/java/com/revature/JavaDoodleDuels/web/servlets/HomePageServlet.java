@@ -6,6 +6,8 @@ import javax.naming.AuthenticationException;
 import javax.naming.directory.InvalidAttributesException;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,8 @@ import com.revature.JavaDoodleDuels.web.dto.LoginCredentials;
 
 @RestController
 public class HomePageServlet {
+	private final static Logger  log = LogManager.getFormatterLogger();
+
 
 	private final UserService userService;
 	private final DuelerService duelerService;
@@ -42,6 +46,13 @@ public class HomePageServlet {
 	
 	
 	@PostMapping("/login")
+<<<<<<< HEAD
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void login(@RequestBody LoginCredentials loginCredentials, HttpSession httpSession) throws AuthenticationException, InvalidAttributesException {
+		User authUser = userService.authenticatedUser(loginCredentials.getUsername(), loginCredentials.getPassword());
+		httpSession.setAttribute("authUser", authUser);
+		log.info("logging in ...");
+=======
 	public ResponseEntity<Void> login(@RequestBody LoginCredentials loginCredentials, HttpSession httpSession) throws AuthenticationException, InvalidAttributesException {
 		if(!(userService.isUsernameAvailable(loginCredentials.getUsername()))){
 			User authUser = userService.findUserByUsername(loginCredentials.getUsername());
@@ -55,12 +66,14 @@ public class HomePageServlet {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 		
+>>>>>>> 33209367e97eacbe08db940f09ecd29f4d82c1c5
 	}
 	
 
 	@DeleteMapping("/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
+		log.info("logging out...session invalid");
 	}
 	
 	
