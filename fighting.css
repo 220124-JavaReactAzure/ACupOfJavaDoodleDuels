@@ -99,14 +99,24 @@ body,
 .hp-mp1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2.2fr 0.3fr 0.3fr;
+    grid-template-rows: 1fr 2.0fr 0.2fr 0.3fr 0.3fr;
     gap: 0px 0px;
     grid-template-areas:
     ". . ."
     ". . ."
+    "name1 name1 name1"
     "hp1 hp1 hp1"
     "mp1 mp1 mp1";
     grid-area: hp-mp1;
+}
+
+.name1{
+    grid-area: name1;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hp1 {
@@ -132,14 +142,24 @@ body,
 .hp-mp2 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2.2fr 0.3fr 0.3fr;
+    grid-template-rows: 1fr 2.0fr 0.2fr 0.3fr 0.3fr;
     gap: 0px 0px;
     grid-template-areas:
     ". . ."
     ". . ."
+    "name2 name2 name2"
     "hp2 hp2 hp2"
     "mp2 mp2 mp2";
     grid-area: hp-mp2;
+}
+
+.name2{
+    grid-area: name2;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hp2 {
@@ -165,7 +185,7 @@ body,
 .basic-attack .tooltiptext {
     visibility: hidden;
     font-size: 2vh;
-    width: 120px;
+    width: 240px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -175,7 +195,7 @@ body,
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -199,7 +219,7 @@ body,
 .abl1 .tooltiptext {
     visibility: hidden;
     font-size: 2vh;
-    width: 120px;
+    width: 240px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -209,7 +229,7 @@ body,
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -219,8 +239,8 @@ body,
     position: absolute;
     top: 100%;
     left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
+    margin-left: -10px;
+    border-width: 10px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
 }
@@ -233,7 +253,7 @@ body,
 .abl2 .tooltiptext {
     visibility: hidden;
     font-size: 2vh;
-    width: 120px;
+    width: 240px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -243,7 +263,7 @@ body,
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -267,7 +287,7 @@ body,
 .abl3 .tooltiptext {
     visibility: hidden;
     font-size: 2vh;
-    width: 120px;
+    width: 240px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -277,7 +297,7 @@ body,
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -317,7 +337,7 @@ body,
     text-align: center; 
 }
 
-#you-win {
+#winOrLose {
     
     width: 50%;
     height: 50%;

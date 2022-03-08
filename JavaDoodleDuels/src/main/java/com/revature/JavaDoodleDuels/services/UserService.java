@@ -111,12 +111,12 @@ public class UserService {
 =======
 >>>>>>> 33209367e97eacbe08db940f09ecd29f4d82c1c5
 	public boolean isEmailAvailable(String email) {
-		return userDAO.findUserByEmail(email).isEmpty();
+		return !(userDAO.findUserByEmail(email).isPresent());
 	}
 	
 	@Transactional
 	public boolean isUsernameAvailable(String username) {
-		return userDAO.findUserByUsername(username).isEmpty();
+		return !(userDAO.findUserByUsername(username).isPresent());
 	}
 <<<<<<< HEAD
 =======

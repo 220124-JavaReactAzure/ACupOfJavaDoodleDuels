@@ -9,52 +9,56 @@
 
     <div class="grid-container">
         <div id="overlay">
-            <div id="you-win">
-                <p>!!YOU WIN!!</p>
-            </div><br>
+            <div id="winOrLose"></div>
             <div id="new-fight" onClick="window.location.reload();">New fight</div>
             <div id="close-overlay" onclick="off()">Return</div>
         </div>
         <div class="fighting-area">
             <div class="basic-attack" onclick="basicAttack()">
-                <span class="tooltiptext">Deal 10 physical damage</span>
-                Basic Attack
+                <span class="tooltiptext"><p id="basicDesc"></p></span>
+                <b>Basic Attack</b>
             </div>
             <div class="abl1" onclick="abl1()">
-                <span class="tooltiptext">Deal 15 fire damage. Cost 12 mana</span>
-                Fireball
+                <span class="tooltiptext"><p id="abl1Desc"></p></span>
+                <b id="skill1"></b>
             </div>
             <div class="abl2" onclick="abl2()">
-                <span class="tooltiptext">Deal 12 physical damage. Cost 6 mana</span>
-                Sucker Punch
+                <span class="tooltiptext"><p id="abl2Desc"></p></span>
+                <b id="skill2"></b>
             </div>
             <div class="abl3" onclick="abl3()">
-                <span class="tooltiptext">Restores 50% health and 75% mana. Only useable once</span>
-                Cat Squish
+                <span class="tooltiptext"><p id="abl3Desc"></p></span>
+                <b id="skill3"></b>
             </div>
         </div>
         <div class="fighter-1">
-            <img src="https://cdn.discordapp.com/attachments/946784294473453628/948675790512459806/unknown.png"
+            <img src=""
                 id="fighter1">
         </div>
         <div class="fighter-2">
-            <img src="https://cdn.discordapp.com/attachments/946784294473453628/948677957025677372/unknown.png"
+            <img src=""
                 id="fighter2">
         </div>
         <div class=" hp-mp1">
+            <div class="name1" id="name1">
+                <b id="fighterName1"></b>
+            </div>
             <div class="hp1" id="hp1">
-                <b id="health1"></b>/100
+                <b id="health1"></b><b>/</b><b id="maxHealth1"></b>
             </div>
             <div class="mp1" id="mp1">
-                <b id="mana1"></b>/30
+                <b id="mana1"></b><b>/</b><b id="maxMana1"></b>
             </div>
         </div>
         <div class="hp-mp2">
+            <div class="name2" id="name2">
+                <b id="fighterName2"></b>
+            </div>
             <div class="hp2" id="hp2">
-                <b id="health2"></b>/65
+                <b id="health2"></b><b>/</b><b id="maxHealth2"></b>
             </div>
             <div class="mp2" id="mp2">
-                <b id="mana2"></b>/75
+                <b id="mana2"></b><b>/</b><b id="maxMana2"></b>
             </div>
         </div>
     </div>
