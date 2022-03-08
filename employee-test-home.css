@@ -1,0 +1,123 @@
+body{
+    background-image: url("https://media.discordapp.net/attachments/946784294473453628/949073667445366794/laura-hernandez-hindia-render20e-final.png?width=1084&height=610"); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color:burlywood;
+    font-weight: bold;
+    font-size: 3vh;
+}
+html {
+    height: 100%
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+    font-size: 10vh;
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+}
+html,
+body,
+.grid-container{
+    height: 100%;
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1.3fr 1.3fr 0.3fr 1.3fr 0.3fr 1.3fr 1.3fr;
+    grid-template-rows: 1.5fr 0.5fr 0.6fr 0.6fr 0.5fr 0.6fr 0.5fr 0.6fr 2.1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". doodle-duel doodle-duel doodle-duel doodle-duel doodle-duel ."
+      ". view-account . view-dueler . add-skill ."
+      ". . . . . . ."
+      ". remove-user . create-dueler . remove-skill ."
+      ". . . . . . ."
+      ". add-dummy . remove-dueler . display-doodle-loop ."
+      ". . . . . display-doodle-loop ."
+      ". remove-dummy . fight-dummy . display-doodle-loop ."
+      ". . . . . display-doodle-loop ."
+      ". . . . . . .";
+      
+  }
+  
+  .view-account { 
+    grid-area: view-account; 
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center;
+}
+  
+  .remove-user {
+    grid-area: remove-user;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .view-dueler {
+    grid-area: view-dueler;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .add-skill { grid-area: add-skill;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .remove-skill { grid-area: remove-skill;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .add-dummy { grid-area: add-dummy;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .remove-dummy { grid-area: remove-dummy;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .remove-dueler { grid-area: remove-dueler;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .create-dueler { grid-area: create-dueler;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .fight-dummy { grid-area: fight-dummy;
+    background-color: rgb(158, 23, 158);
+    opacity: 75%;
+    text-align: center; }
+  
+  .display-doodle-loop { 
+    grid-area: display-doodle-loop;
+    text-align: center; }
+  
+  .doodle-duel { 
+      text-align: center;
+      grid-area: doodle-duel; 
+    }
+  
