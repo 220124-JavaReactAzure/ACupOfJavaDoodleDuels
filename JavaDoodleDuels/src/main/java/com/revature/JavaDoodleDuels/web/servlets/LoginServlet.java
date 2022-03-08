@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.revature.JavaDoodleDuels.services.UserService;
 
 import org.json.JSONObject;
@@ -33,11 +35,25 @@ public class LoginServlet extends HttpServlet{
 					.put("password", password)
 					.toString();
 		try {
+			boolean wasValidated = userService.authenticatedUser(email, password);
+			
+			if(wasValidated) {
+				resp.setStatus(200);
+				resp.getWriter().write("User Validated");
+				resp.sendRedirect(homeServlet);
+			}else {
+				resp.setStatus(403);
+				resp.getWriter().write("Invalid username or password, try again");
+				resp.sendRedirect("/LoginServlet");
+			}
 			
 			
-			
-		} catch (Exception e) {
+		} catch (StreamReadException | DatabindException e) {
+			e.printStackTrace();
 			// TODO: handle exception
+		}catch(Exception e) {
+			resp.setStatus(500);
+			e.printStackTrace();
 		}
 	}
 }

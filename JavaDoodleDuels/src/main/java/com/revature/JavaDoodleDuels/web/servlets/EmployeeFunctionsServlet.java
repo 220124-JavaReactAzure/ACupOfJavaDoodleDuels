@@ -1,5 +1,7 @@
 package com.revature.JavaDoodleDuels.web.servlets;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,8 @@ import com.revature.JavaDoodleDuels.web.dto.addDummyRequest;
 @RestController
 @RequestMapping("/employeeFunctions")
 public class EmployeeFunctionsServlet {
+	private final static Logger  log = LogManager.getFormatterLogger();
+
 	
 	private final UserService userService;
 	private final DuelerService duelerService;
@@ -37,9 +41,11 @@ public class EmployeeFunctionsServlet {
 	@PostMapping("/removeUser")
 	public ResponseEntity<Void> removeUser(@RequestBody RemoveUserRequest removeUserRequest) {
 		if(userService.isUsernameAvailable(removeUserRequest.getUsername())) {
+			log.info("invalid name provided, name doesnt exist in database...");
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
 			userService.removeUserByUsername(removeUserRequest.getUsername());
+			log.info("User removed...");
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		}
 	}
@@ -48,9 +54,11 @@ public class EmployeeFunctionsServlet {
 	@PostMapping("/removeDueler")
 	public ResponseEntity<Void> removeDueler(@RequestBody RemoveDuelerRequest removeDuelerRequest) {
 		if(duelerService.isDuelerNameAvailable(removeDuelerRequest.getDuelerName())) {
+			log.info("dueler not found...");
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
 			duelerService.removeDuelerByName(removeDuelerRequest.getDuelerName());
+			log.info("dueler found and removed");
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		}
 	}

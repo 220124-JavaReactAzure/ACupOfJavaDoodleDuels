@@ -4,6 +4,8 @@ import javax.naming.AuthenticationException;
 import javax.naming.directory.InvalidAttributesException;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +22,8 @@ import com.revature.JavaDoodleDuels.web.dto.LoginCredentials;
 
 @RestController
 public class HomePageServlet {
+	private final static Logger  log = LogManager.getFormatterLogger();
+
 
 	private final UserService userService;
 	
@@ -40,12 +44,14 @@ public class HomePageServlet {
 	public void login(@RequestBody LoginCredentials loginCredentials, HttpSession httpSession) throws AuthenticationException, InvalidAttributesException {
 		User authUser = userService.authenticatedUser(loginCredentials.getUsername(), loginCredentials.getPassword());
 		httpSession.setAttribute("authUser", authUser);
+		log.info("logging in ...");
 	}
 	
 
 	@DeleteMapping("/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
+		log.info("logging out...session invalid");
 	}
 	
 	//home page for regular user after login
