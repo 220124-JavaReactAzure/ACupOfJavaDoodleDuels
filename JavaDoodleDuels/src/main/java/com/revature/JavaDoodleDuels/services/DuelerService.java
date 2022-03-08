@@ -56,7 +56,7 @@ public class DuelerService {
 
 	@Transactional
 	public boolean isDuelerNameAvailable(String duelerName) {
-		return duelerDAO.findDuelerByDuelerName(duelerName).isEmpty();
+		return !(duelerDAO.findDuelerByDuelerName(duelerName).isPresent());
 	}
 	
 	@Transactional
