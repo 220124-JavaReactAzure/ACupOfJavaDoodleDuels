@@ -57,12 +57,12 @@ public class UserService {
 
 	@Transactional
 	public boolean isEmailAvailable(String email) {
-		return userDAO.findUserByEmail(email).isEmpty();
+		return !(userDAO.findUserByEmail(email).isPresent());
 	}
 	
 	@Transactional
 	public boolean isUsernameAvailable(String username) {
-		return userDAO.findUserByUsername(username).isEmpty();
+		return !(userDAO.findUserByUsername(username).isPresent());
 	}
 	
 	@Transactional
