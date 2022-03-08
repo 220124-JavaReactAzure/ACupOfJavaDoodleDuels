@@ -65,8 +65,11 @@ public class DuelerService {
 
 	@Transactional
 	public boolean isDuelerNameAvailable(String duelerName) {
+
 		log.info("Checking is dueler is available....");
-		return duelerDAO.findDuelerByDuelerName(duelerName).isEmpty();
+
+		return !(duelerDAO.findDuelerByDuelerName(duelerName).isPresent());
+
 	}
 	
 	@Transactional

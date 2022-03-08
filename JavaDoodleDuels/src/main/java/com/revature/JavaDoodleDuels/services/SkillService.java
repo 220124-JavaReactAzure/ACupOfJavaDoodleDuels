@@ -62,7 +62,7 @@ public class SkillService {
 
 	@Transactional
 	public boolean isSkillNameAvailable(String skillName) {
-		return skillDAO.findSkillBySkillName(skillName).isEmpty();
+		return !(skillDAO.findSkillBySkillName(skillName).isPresent());
 	}
 
 	@Transactional
