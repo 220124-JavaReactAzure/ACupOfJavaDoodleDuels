@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Create New Skill</title>
+    <link rel="stylesheet" href="skill-creation.css"/>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header-container">
+            <h1 class="main-header">Delete Skill</h1>
+        </header>
+        <div class="form-div">
+            <h2 class="previewImgHeader" id="previewImgHeader">Image Preview</h2>
+            <img class="previewImg" id="previewImg">
+            <form class="skill-form">
+                <label for="search-skill">Search for skill</label>
+                <input type="text" id="search-skill" class="skill-skill">
+                <br>
+                Skill Name:<output name="skill-name"></output>
+                <BR>
+                <!-- <input type="text" id="skill-name" class="skill-name"><br> -->
+                Skill Type: <output name="skill-type"></output>
+                <br>
+                <!-- <input type="text" id="skill-type" class="skill-type"><br> -->
+                Stat Requirement:<output name="skill-stat-req"></output>
+                <br>
+                <!-- <input type="text" id="skill-stat-req" class="skill-stat-req"><br> -->
+                Base Damage:<output name="skill-base-damage"></output>
+                <br>
+                <!-- <input type="text" id="skill-base-damage" class="skill-base-damage"><br> -->
+                Scaling Damage: <output name="skill-scaling-damage"></output>
+                <br>
+                <!-- <input type="text" id="skill-scaling-damage" class="skill-scaling-damage"><br> -->
+                <label for="skill-scaling-req">Scaling Requirement:<output name="skill-scaling-req"></output>
+                <BR><br>
+             <!-- <input type="text" id="skill-scaling-req" class="skill-scaling-req"><br> -->
+                <label>Do you want to Delete this skill?</label>
+                <div id="submit" value="Delete" onclick="postDueler()">Delete Skill</div>
+                <div id="submit" value="Exit" onclick="postDueler()">Exit</div>
+            </form>
+        </div>
+    </div>
+    <script src="./character-creation.js"></script>
+</body>
+</html>
