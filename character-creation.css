@@ -1,4 +1,5 @@
-body {
+html, body {
+    height: 100%;
     margin: 0;
 }
 
@@ -8,6 +9,7 @@ input, select {
 }
 
 .header-container {
+    height: 145px;
     text-align: center;
 }
 
@@ -22,14 +24,22 @@ input, select {
     text-shadow: 0 0 25px rgb(255, 238, 0);
 }
 
-.form-div {
+.main-container {
     display: flex;
     flex-flow: column;
+    height: 100%;
+}
+
+.form-div {
     text-align: center;
     background-color: #222;
-    height: 100%;
-    padding: 50px 0 189.5px 0;
     color:rgb(255, 238, 0);
+    padding-top: 125px;
+}
+
+.filler-div {
+    flex-grow: 1;
+    background-color: #222;
 }
 
 .character-form {
@@ -55,21 +65,4 @@ input, select {
 .previewImgHeader {
     display: none;
     margin: 0;
-}
-
-#submit {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.16, rgb(207, 207, 207)), color-stop(0.79, rgb(252, 252, 252)));
-    background-image: -moz-linear-gradient(center bottom, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%);
-    background-image: linear-gradient(to top, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%); 
-    padding: 3px;
-    border: 1px solid #000;
-    color: black;
-    text-decoration: none;
-  }
-#submit:hover {
-    background-image: -moz-linear-gradient(center bottom, rgb(207, 207, 207) 100%, rgb(252, 252, 252) 0%);
-    background-image: linear-gradient(to top, rgb(207, 207, 207) 100%, rgb(252, 252, 252) 0%); 
 }
