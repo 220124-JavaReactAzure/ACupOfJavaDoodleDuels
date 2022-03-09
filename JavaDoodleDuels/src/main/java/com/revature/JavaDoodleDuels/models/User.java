@@ -38,7 +38,7 @@ public class User implements Serializable{
 	private String password;
 	
 	@Column(name="account_type", nullable = false)
-	private int accountType;   // 1-employee, 2-user
+	private int accountType;   // 1-user, 2-employee
 	
 	@Column(name="employee_code")
 	private String employeeCode;  // this is only used for account type 1-employee, if an account type 2-user is created it defaults to ""

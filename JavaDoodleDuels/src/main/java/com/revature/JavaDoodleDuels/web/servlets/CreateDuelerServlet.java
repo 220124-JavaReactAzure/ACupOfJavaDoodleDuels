@@ -52,20 +52,14 @@ public class CreateDuelerServlet {
 	}
 	
 	@PostMapping("/createDueler")
-<<<<<<< HEAD
-	@ResponseStatus(HttpStatus.CREATED)
-	public void createDueler(@RequestBody DuelerRequest duelerRequest) {
-		duelerService.registerNewDueler(duelerRequest);
-		log.info("Dueler servlet started...");
-=======
 	public ResponseEntity<Void> createDueler(@RequestBody DuelerRequest duelerRequest) {
+		log.info("Dueler servlet started...");
 		if(duelerService.isDuelerNameAvailable(duelerRequest.getDuelerName())) {
 			duelerService.registerNewDueler(duelerRequest);
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		}else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
->>>>>>> 33209367e97eacbe08db940f09ecd29f4d82c1c5
 	}
 	
 	@GetMapping("/viewDuelers")
