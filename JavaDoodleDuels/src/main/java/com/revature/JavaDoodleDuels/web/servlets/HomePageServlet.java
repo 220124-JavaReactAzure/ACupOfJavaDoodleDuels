@@ -46,27 +46,22 @@ public class HomePageServlet {
 	
 	
 	@PostMapping("/login")
-<<<<<<< HEAD
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void login(@RequestBody LoginCredentials loginCredentials, HttpSession httpSession) throws AuthenticationException, InvalidAttributesException {
-		User authUser = userService.authenticatedUser(loginCredentials.getUsername(), loginCredentials.getPassword());
-		httpSession.setAttribute("authUser", authUser);
-		log.info("logging in ...");
-=======
 	public ResponseEntity<Void> login(@RequestBody LoginCredentials loginCredentials, HttpSession httpSession) throws AuthenticationException, InvalidAttributesException {
 		if(!(userService.isUsernameAvailable(loginCredentials.getUsername()))){
 			User authUser = userService.findUserByUsername(loginCredentials.getUsername());
 			if(authUser.getPassword().equals(loginCredentials.getPassword())) {
 				httpSession.setAttribute("authUser", authUser);
-				return new ResponseEntity<>(HttpStatus.ACCEPTED);
+				if(authUser.getAccountType() == 2) {
+					return new ResponseEntity<>(HttpStatus.ACCEPTED);
+				}else {
+					return new ResponseEntity<>(HttpStatus.OK);
+				}
 			}else {
-				return new ResponseEntity<>(HttpStatus.CONFLICT);
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
 		}else {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
-		
->>>>>>> 33209367e97eacbe08db940f09ecd29f4d82c1c5
 	}
 	
 
