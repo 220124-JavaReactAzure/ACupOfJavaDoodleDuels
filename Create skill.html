@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Create New Skill</title>
+    <link rel="stylesheet" href="skill-creation.css"/>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header-container">
+            <h1 class="main-header">Create a New Skill</h1>
+        </header>
+        <div class="form-div">
+            <h2 class="previewImgHeader" id="previewImgHeader">Image Preview</h2>
+            <img class="previewImg" id="previewImg">
+            <form class="skill-form">
+                <label for="skill-name">Skill Name: </label>
+                <input type="text" id="skill-name" class="skill-name"><br>
+                <label for="skill-type">Type: </label>
+                <input type="text" id="skill-type" class="skill-type"><br>
+                <label for="skill-stat-req">Stat Requirement: </label>
+                <input type="text" id="skill-stat-req" class="skill-stat-req"><br>
+                <label for="skill-base-damage">Base Damage: </label>
+                <input type="text" id="skill-base-damage" class="skill-base-damage"><br>
+                <label for="skill-scaling-damage">Scaling Damage: </label>
+                <input type="text" id="skill-scaling-damage" class="skill-scaling-damage"><br>
+                <label for="skill-scaling-req">Scaling Requirement: </label>
+                <input type="text" id="skill-scaling-req" class="skill-scaling-req"><br>
+
+                <div id="submit" value="Create New skill" onclick="postDueler()">Create New Skill</div>
+            </form>
+        </div>
+    </div>
+    <script src="./character-creation.js"></script>
+</body>
+</html>
