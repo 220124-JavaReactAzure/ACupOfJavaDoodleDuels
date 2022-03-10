@@ -2,8 +2,8 @@
 a = JSON.parse((localStorage.getItem("current_user")));
 console.log(a.username);
 var skills
-fetch("https://java-doodle-duels.azurewebsites.net/createDueler",{
-        method: 'GET',
+fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
+        method: 'POST',
         credentials: 'include',
         origin: true,
         body: {
