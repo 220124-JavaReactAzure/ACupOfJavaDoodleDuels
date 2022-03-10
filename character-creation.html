@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Character Creation</title>
-    <link rel="stylesheet" href="character-creation.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="character-creation.css" />
+  </head>
+  <body>
     <div class="main-container">
-        <header class="header-container">
-            <h1 class="main-header">Create your Character!</h1>
-        </header>
-        <div class="form-div">
-            <h2 class="previewImgHeader" id="previewImgHeader">Image Preview</h2>
-            <img class="previewImg" id="previewImg">
-            <form class="character-form">
-                <label for="character-name">Character Name: </label>
-                <input type="text" id="character-name" class="character-name"><br>
-                <label for="character-img">Submit an Image of your Character: </label>
-                <input type="file" id="character-img" class="character-img"><br>
-                <h4>Here are your Randomly Generated Stats!</h4>
-                <p>Constitution: <span id="constitutionStat"></span></p>
-                <p>Wisdom: <span id="wisdomStat"></span></p>
-                <p>Strength: <span id="strengthStat"></span></p>
-                <p>Dexterity: <span id="dexterityStat"></span></p>
-                <p>Intelligence: <span id="intelligenceStat"></span></p>
-                <p>Charisma: <span id="charismaStat"></span></p>
-                <label>Select Skill 1: </label>
-                <select class="skillOne" id="skillOne"></select><br>
-                <label>Select Skill 2: </label>
-                <select class="skillTwo" id="skillTwo"></select><br>
-                <label>Select Skill 3: </label>
-                <select class="skillThree" id="skillThree"></select><br>
-                <input type="hidden" id="accountNumber">
-                <input type="hidden" id="isDummy">
-                <div id="submit" value="Create your Character" onclick="postDueler()">Create your Character</div>
-            </form>
-        </div>
+      <header class="header-container">
+        <h1 class="main-header">Create your Character!</h1>
+      </header>
+      <div class="form-div">
+        <h2 class="previewImgHeader" id="previewImgHeader">Image Preview</h2>
+        <img class="previewImg" id="previewImg" />
+        <form class="character-form">
+          <label for="character-name">Character Name: </label>
+          <input type="text" id="character-name" class="character-name" /><br />
+          <label for="character-img">Submit an Image of your Character: </label>
+          <input type="file" id="character-img" class="character-img" /><br />
+          <h4>Here are your Randomly Generated Stats!</h4>
+          <p>Constitution: <span id="constitutionStat"></span></p>
+          <p>Wisdom: <span id="wisdomStat"></span></p>
+          <p>Strength: <span id="strengthStat"></span></p>
+          <p>Dexterity: <span id="dexterityStat"></span></p>
+          <p>Intelligence: <span id="intelligenceStat"></span></p>
+          <p>Charisma: <span id="charismaStat"></span></p>
+          <label>Select Skill 1: </label>
+          <select class="skillOne" id="skillOne"></select
+          ><br />
+          <label>Select Skill 2: </label>
+          <select class="skillTwo" id="skillTwo"></select
+          ><br />
+          <label>Select Skill 3: </label>
+          <select class="skillThree" id="skillThree"></select
+          ><br />
+          <input type="hidden" id="accountNumber" />
+          <input type="hidden" id="isDummy" />
+          <input type="submit" value="Create your Character" onclick=PostDueler()/>
+        
+        </form>
+      </div>
+      <div id="submit" value="homepage" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html')">Return to Homepage</div>
+      <div class="filler-div"></div>
     </div>
     <script src="./character-creation.js"></script>
-</body>
+  </body>
 </html>
