@@ -5,6 +5,7 @@ var skills
 var curUser = {
     username: a.username
 }
+
 fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
         method: 'POST',
         credentials: 'include',
@@ -22,12 +23,19 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
         console.log(skills);
     }).then(function fillInfo(){
         console.log(skills);
-        for(let i = 0; i< skills.allSkills.length; i++){
+        for(let i = 1; i < 4; i++) {
+            let currentSelect = document.getElementById(`skill${i}`)
+            for(let j = 0; j < skills.allSkills.length; j++){
+                let newSkillOption = document.createElement("option");
+                let optionText = skills.allSkills[j].skillName;
 
+                newSkillOption.appendChild(optionText);
+                newSkillOption.setAttribute('value', `${optionText}`);
+
+                currentSelect.appendChild(newSkillOption);
+            }
         }
     });
-
-
 
 var blobImage
 const reader = new FileReader();
@@ -51,25 +59,25 @@ for(let s in stats) {
 document.getElementById('hp').innerHTML = randomHPMP() + Number(document.getElementById("constitutionStat").innerHTML);
 document.getElementById('mp').innerHTML = randomHPMP() + Number(document.getElementById("wisdomStat").innerHTML);
 
-const testSkills = ["skill1", "skill2", "skill3"];
+// const testSkills = ["skill1", "skill2", "skill3"];
 
-for(let t in testSkills) {
-    let s1 = document.getElementById("skillOne");
-    let s2 = document.getElementById("skillTwo");
-    let s3 = document.getElementById("skillThree");
+// for(let t in testSkills) {
+//     let s1 = document.getElementById("skillOne");
+//     let s2 = document.getElementById("skillTwo");
+//     let s3 = document.getElementById("skillThree");
 
-    let newOption1 = document.createElement("option");
-    let newOption2 = document.createElement("option");
-    let newOption3 = document.createElement("option");
+//     let newOption1 = document.createElement("option");
+//     let newOption2 = document.createElement("option");
+//     let newOption3 = document.createElement("option");
 
-    newOption1.text = testSkills[t];
-    newOption2.text = testSkills[t];
-    newOption3.text = testSkills[t];
+//     newOption1.text = testSkills[t];
+//     newOption2.text = testSkills[t];
+//     newOption3.text = testSkills[t];
 
-    s1.add(newOption1);
-    s2.add(newOption2);
-    s3.add(newOption3);
-}
+//     s1.add(newOption1);
+//     s2.add(newOption2);
+//     s3.add(newOption3);
+// }
 
 document.getElementById("character-img").onchange = evt => {
     const [file] = document.getElementById("character-img").files;
