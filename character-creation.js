@@ -1,26 +1,14 @@
-// var url = "https://java-doodle-duels.azurewebsites.net/createDueler";
 
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", url);
-
-// //xhr.setRequestHeader("Origin", "https://javadoodleduels.blob.core.windows.net/$web/character-creation.html");
-// // xhr.setRequestHeader("Access-Control-Request-Method", "GET");
-// xhr.withCredentials = true;
-
-// xhr.onreadystatechange = function () {
-//    if (xhr.readyState === 4) {
-//       console.log(xhr.status);
-//       console.log(xhr);
-//    }};
-
-// xhr.send();
 a = JSON.parse((localStorage.getItem("current_user")));
 console.log(a.username);
 var skills
 fetch("https://java-doodle-duels.azurewebsites.net/createDueler",{
         method: 'GET',
         credentials: 'include',
-        origin: true
+        origin: true,
+        body: {
+            username: a.username
+        }
     })
     .then(response => {
         return response.json();
@@ -28,12 +16,12 @@ fetch("https://java-doodle-duels.azurewebsites.net/createDueler",{
         console.log(document.cookie);
         skills = data;
         console.log(skills);
-    });//.then(function fillInfo(){
-        //console.log(skills);
-        //for(let i = 0; i< skills.duelerResponse.allSkills.length; i++){
+    }).then(function fillInfo(){
+        console.log(skills);
+        for(let i = 0; i< skills.duelerResponse.allSkills.length; i++){
 
-        //}
-    //});
+        }
+    });
 
 
 
