@@ -66,3 +66,7 @@ input, select {
     display: none;
     margin: 0;
 }
+
+.submit {
+    cursor: pointer;
+}
