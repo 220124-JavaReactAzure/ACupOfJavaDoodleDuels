@@ -1,68 +1,91 @@
 <!DOCTYPE html>
-<HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="fighting.css" />
+  </head>
 
-<head>
-    <link rel="stylesheet" href="fighting.css">
-</head>
-
-<body>
-
+  <body>
     <div class="grid-container">
-        <div id="overlay">
-            <div id="winOrLose"></div>
-            <div id="new-fight" onClick="window.location.reload();">New fight</div>
-            <div id="close-overlay" onclick="off()">Return</div>
+      <div id="overlay">
+        <div id="winOrLose"></div>
+        <div id="new-fight" onClick="window.location.reload();">New fight</div>
+        <div id="close-overlay" onclick="off()">Return</div>
+      </div>
+      <div class="fighting-area">
+        <div class="basic-attack" onclick="basicAttack()">
+          <span class="tooltiptext"><p id="basicDesc"></p></span>
+          <b>Basic Attack</b>
         </div>
-        <div class="fighting-area">
-            <div class="basic-attack" onclick="basicAttack()">
-                <span class="tooltiptext"><p id="basicDesc"></p></span>
-                <b>Basic Attack</b>
-            </div>
-            <div class="abl1" onclick="abl1()">
-                <span class="tooltiptext"><p id="abl1Desc"></p></span>
-                <b id="skill1"></b>
-            </div>
-            <div class="abl2" onclick="abl2()">
-                <span class="tooltiptext"><p id="abl2Desc"></p></span>
-                <b id="skill2"></b>
-            </div>
-            <div class="abl3" onclick="abl3()">
-                <span class="tooltiptext"><p id="abl3Desc"></p></span>
-                <b id="skill3"></b>
-            </div>
+        <div class="abl1" onclick="abl1()">
+          <span class="tooltiptext"><p id="abl1Desc"></p></span>
+          <b id="skill1"></b>
         </div>
-        <div class="fighter-1">
-            <img src=""
-                id="fighter1">
+        <div class="abl2" onclick="abl2()">
+          <span class="tooltiptext"><p id="abl2Desc"></p></span>
+          <b id="skill2"></b>
         </div>
-        <div class="fighter-2">
-            <img src=""
-                id="fighter2">
+        <div class="abl3" onclick="abl3()">
+          <span class="tooltiptext"><p id="abl3Desc"></p></span>
+          <b id="skill3"></b>
         </div>
-        <div class=" hp-mp1">
-            <div class="name1" id="name1">
-                <b id="fighterName1"></b>
-            </div>
-            <div class="hp1" id="hp1">
-                <b id="health1"></b><b>/</b><b id="maxHealth1"></b>
-            </div>
-            <div class="mp1" id="mp1">
-                <b id="mana1"></b><b>/</b><b id="maxMana1"></b>
-            </div>
+      </div>
+      <div class="fighter-1">
+        <img src="" id="fighter1" />
+      </div>
+      <div class="fighter-2">
+        <img src="" id="fighter2" />
+      </div>
+      <div class="hp-mp1">
+        <div class="name1" id="name1">
+          <b id="fighterName1"></b>
         </div>
-        <div class="hp-mp2">
-            <div class="name2" id="name2">
-                <b id="fighterName2"></b>
-            </div>
-            <div class="hp2" id="hp2">
-                <b id="health2"></b><b>/</b><b id="maxHealth2"></b>
-            </div>
-            <div class="mp2" id="mp2">
-                <b id="mana2"></b><b>/</b><b id="maxMana2"></b>
-            </div>
+        <div class="hp1" id="hp1">
+          <b id="health1"></b><b>/</b><b id="maxHealth1"></b>
         </div>
+        <div class="mp1" id="mp1">
+          <b id="mana1"></b><b>/</b><b id="maxMana1"></b>
+        </div>
+      </div>
+      <div class="hp-mp2">
+        <div class="name2" id="name2">
+          <b id="fighterName2"></b>
+        </div>
+        <div class="hp2" id="hp2">
+          <b id="health2"></b><b>/</b><b id="maxHealth2"></b>
+        </div>
+        <div class="mp2" id="mp2">
+          <b id="mana2"></b><b>/</b><b id="maxMana2"></b>
+        </div>
+      </div>
+      <div id="tweet">
+        <a
+          class="twitter-share-button"
+          href="https://twitter.com/intent/tweet?text=Victory tastes like tacos, i just cat squished doodle taco aka scotteh on JavaDoodleDuels, come join us!!"
+          data-size="large"
+        >
+          Tweet</a
+        >
+      </div>
     </div>
     <script src="fighting.js"></script>
-</body>
+    <script>
+      window.twttr = (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
 
-</HTML>
+        t._e = [];
+        t.ready = function (f) {
+          t._e.push(f);
+        };
+
+        return t;
+      })(document, "script", "twitter-wjs");
+    </script>
+  </body>
+</html>

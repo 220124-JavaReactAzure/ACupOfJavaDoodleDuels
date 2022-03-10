@@ -80,21 +80,103 @@
                             </div>
                         
                           </form>
-          
-                        </div>
-                        <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-          
-                          <img src="https://media.discordapp.net/attachments/946784294473453628/949038157335240704/coollogo_com-30641451.png" 
-                          class="img-fluid" alt="Sample image">
-          
                         </div>
                       </div>
-                    </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="email"
+                            id="form3Example3c"
+                            class="form-control"
+                          />
+                          <label class="form-label" for="form3Example3c"
+                            >Your Email</label
+                          >
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="password"
+                            id="form3Example4c"
+                            class="form-control"
+                          />
+                          <label class="form-label" for="form3Example4c"
+                            >Password</label
+                          >
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input
+                            type="password"
+                            id="form3Example4cd"
+                            class="form-control"
+                          />
+                          <label class="form-label" for="form3Example4cd"
+                            >Repeat your password</label
+                          >
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
+                      >
+                        <button type="button" class="btn btn-primary btn-lg">
+                          Register
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div
+                    class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+                  >
+                    <img
+                      src="https://media.discordapp.net/attachments/946784294473453628/949038157335240704/coollogo_com-30641451.png"
+                      class="img-fluid"
+                      alt="Sample image"
+                    />
+                    <a
+                      class="twitter-share-button"
+                      href="https://twitter.com/intent/tweet?text=Victory tastes like tacos, i just cat squished doodle taco aka scotteh on JavaDoodleDuels, come join us!!"
+                      data-size="large"
+                    >
+                      Tweet</a
+                    >
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <script src="registration.js"></script>     
-    </body>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      window.twttr = (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function (f) {
+          t._e.push(f);
+        };
+
+        return t;
+      })(document, "script", "twitter-wjs");
+    </script>
+  </body>
 </html>
