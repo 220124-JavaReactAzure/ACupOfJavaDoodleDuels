@@ -69,6 +69,18 @@ input, select {
 
 .redirect-link {
     cursor: pointer;
+}
+
+.skillOptions{
+    position:absolute;
+    top:35%;
+    left: 10%;
+    width:20%;
+    background:#777;
+    padding: 45px;
+    border:rgb(255, 238, 0) solid 5px;
+    border-radius: 25px;
+    color: rgb(255, 238, 0);
     padding: 7px;
     max-width: 145px;
     margin-left: auto;

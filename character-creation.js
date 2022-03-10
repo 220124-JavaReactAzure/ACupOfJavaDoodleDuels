@@ -1,3 +1,42 @@
+// var url = "https://java-doodle-duels.azurewebsites.net/createDueler";
+
+// var xhr = new XMLHttpRequest();
+// xhr.open("GET", url);
+
+// //xhr.setRequestHeader("Origin", "https://javadoodleduels.blob.core.windows.net/$web/character-creation.html");
+// // xhr.setRequestHeader("Access-Control-Request-Method", "GET");
+// xhr.withCredentials = true;
+
+// xhr.onreadystatechange = function () {
+//    if (xhr.readyState === 4) {
+//       console.log(xhr.status);
+//       console.log(xhr);
+//    }};
+
+// xhr.send();
+a = JSON.parse((localStorage.getItem("current_user")));
+console.log(a.username);
+var skills
+fetch("https://java-doodle-duels.azurewebsites.net/createDueler",{
+        method: 'GET',
+        credentials: 'include',
+        origin: true
+    })
+    .then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(document.cookie);
+        skills = data;
+        console.log(skills);
+    });//.then(function fillInfo(){
+        //console.log(skills);
+        //for(let i = 0; i< skills.duelerResponse.allSkills.length; i++){
+
+        //}
+    //});
+
+
+
 var blobImage
 const reader = new FileReader();
 
@@ -6,12 +45,19 @@ function randomNum() {
 
     return random;
 }
+function randomHPMP(){
+    let random = Math.floor(Math.random() * 20) + 30;
+    return random;
+}
 
 const stats = ["constitution", "wisdom", "strength", "dexterity", "intelligence", "charisma"];
 
 for(let s in stats) {
     document.getElementById(`${stats[s]}Stat`).innerHTML = randomNum();
 }
+
+document.getElementById('hp').innerHTML = randomHPMP() + Number(document.getElementById("constitutionStat").innerHTML);
+document.getElementById('mp').innerHTML = randomHPMP() + Number(document.getElementById("wisdomStat").innerHTML);
 
 const testSkills = ["skill1", "skill2", "skill3"];
 
@@ -57,6 +103,7 @@ document.getElementById("character-img").onchange = evt => {
   }
 
 function postDueler(){
+   
     let errors = false;
     let error_message = "";
 
@@ -88,13 +135,13 @@ function postDueler(){
             wisdom: document.getElementById("wisdomStat").innerHTML,
             intelligence: document.getElementById("intelligenceStat").innerHTML,
             charisma: document.getElementById("charismaStat").innerHTML,
-            maxHealth: 30 + Number(document.getElementById("constitutionStat").innerHTML),
-            maxMana: 30 + Number(document.getElementById("wisdomStat").innerHTML),
+            maxHealth: document.getElementById('hp').innerHTML,
+            maxMana: document.getElementById('mp').innerHTML,
             skillOne: document.getElementById("skillOne").value,
             skillTwo: document.getElementById("skillTwo").value,
             skillThree: document.getElementById("skillThree").value, 
             isDummy: false
-        }  
+        }   
         console.log(data);
         const requestOptions = {
             method: 'POST',

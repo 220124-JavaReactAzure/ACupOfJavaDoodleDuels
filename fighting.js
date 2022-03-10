@@ -347,6 +347,103 @@ function abl3() {
     }
 }
 
+
+function botAttack(){
+    var attack =  Math.floor(Math.random() * 4);
+    var curmana = Number(document.getElementById("mana2").innerHTML);
+
+    //basic attack
+    if(attack === 1){
+
+    }
+
+    //skill 1
+    else if(attack === 2){
+        if(curmana >= fighter2abl1ManaCost){
+            if(fighter2abl1healing == 1){
+                var curhp = Number(document.getElementById("health2").innerHTML);
+                if ((curhp + fighter2abl1Damage) > document.getElementById("maxHealth2").innerHTML) {
+                    document.getElementById("health2").innerHTML = document.getElementById("maxHealth2").innerHTML;
+                    document.getElementById("mana2").innerHTML -= fighter2abl1ManaCost;
+                } else {
+                    document.getElementById("health2").innerHTML = Number(document.getElementById("health2").innerHTML) + Number(fighter2abl1Damage);
+                    document.getElementById("mana2").innerHTML -= fighter2abl1ManaCost;
+                }
+                var redPer = (document.getElementById("health2").innerHTML / document.getElementById("maxHealth2").innerHTML) * 100;
+                var bluePar = (document.getElementById("mana2").innerHTML / document.getElementById("maxMana2").innerHTML) * 100;
+                var whitePer = 100 - redPer;
+                document.getElementById('hp2').style.background = 'linear-gradient(to right , red ' + redPer + '%, white ' + whitePer + '%)';
+                var whitePer = 100 - bluePar;
+                document.getElementById('mp2').style.background = 'linear-gradient(to right , blue ' + bluePar + '%, white ' + whitePer + '%)';
+                document.getElementById("fighter2").classList.add('shake');
+                setTimeout(function () { document.getElementById("fighter2").classList.remove('shake') }, 500);
+            }else{
+
+            }
+        }else{
+            botAttack();
+        }
+    }
+
+    //skill 2
+    else if(attack === 3){
+        if(curmana >= fighter2abl2ManaCost){
+            if(fighter2abl2healing == 1){
+                var curhp = Number(document.getElementById("health2").innerHTML);
+                if ((curhp + fighter2abl2Damage) > document.getElementById("maxHealth2").innerHTML) {
+                    document.getElementById("health2").innerHTML = document.getElementById("maxHealth2").innerHTML;
+                    document.getElementById("mana2").innerHTML -= fighter2abl2ManaCost;
+                } else {
+                    document.getElementById("health2").innerHTML = Number(document.getElementById("health2").innerHTML) + Number(fighter2abl2Damage);
+                    document.getElementById("mana2").innerHTML -= fighter2abl2ManaCost;
+                }
+                var redPer = (document.getElementById("health2").innerHTML / document.getElementById("maxHealth2").innerHTML) * 100;
+                var bluePar = (document.getElementById("mana2").innerHTML / document.getElementById("maxMana2").innerHTML) * 100;
+                var whitePer = 100 - redPer;
+                document.getElementById('hp2').style.background = 'linear-gradient(to right , red ' + redPer + '%, white ' + whitePer + '%)';
+                var whitePer = 100 - bluePar;
+                document.getElementById('mp2').style.background = 'linear-gradient(to right , blue ' + bluePar + '%, white ' + whitePer + '%)';
+                document.getElementById("fighter2").classList.add('shake');
+                setTimeout(function () { document.getElementById("fighter2").classList.remove('shake') }, 500);
+            }else{
+                
+            }
+        }else{
+            botAttack();
+        }
+    }
+
+    //skill 3
+    else if(attack === 4){
+        if(curmana >= fighter2abl3ManaCost){
+            if(fighter2abl3healing == 1){
+                var curhp = Number(document.getElementById("health2").innerHTML);
+                if ((curhp + fighter2abl3Damage) > document.getElementById("maxHealth2").innerHTML) {
+                    document.getElementById("health2").innerHTML = document.getElementById("maxHealth2").innerHTML;
+                    document.getElementById("mana2").innerHTML -= fighter2abl3ManaCost;
+                } else {
+                    document.getElementById("health2").innerHTML = Number(document.getElementById("health2").innerHTML) + Number(fighter2abl3Damage);
+                    document.getElementById("mana2").innerHTML -= fighter2abl3ManaCost;
+                }
+                var redPer = (document.getElementById("health2").innerHTML / document.getElementById("maxHealth2").innerHTML) * 100;
+                var bluePar = (document.getElementById("mana2").innerHTML / document.getElementById("maxMana2").innerHTML) * 100;
+                var whitePer = 100 - redPer;
+                document.getElementById('hp2').style.background = 'linear-gradient(to right , red ' + redPer + '%, white ' + whitePer + '%)';
+                var whitePer = 100 - bluePar;
+                document.getElementById('mp2').style.background = 'linear-gradient(to right , blue ' + bluePar + '%, white ' + whitePer + '%)';
+                document.getElementById("fighter2").classList.add('shake');
+                setTimeout(function () { document.getElementById("fighter2").classList.remove('shake') }, 500);
+            }else{
+                
+            }
+        }else{
+            botAttack();
+        }
+    }
+}
+
+
+
 function onWin() {
     document.getElementById("overlay").style.display = "flex";
     document.getElementById("winOrLose").innerHTML = "!!! YOU WIN !!!";
