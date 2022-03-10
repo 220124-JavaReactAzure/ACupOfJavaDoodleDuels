@@ -2,6 +2,9 @@
 a = JSON.parse((localStorage.getItem("current_user")));
 console.log(a.username);
 var skills
+var curUser = {
+    username: a.username
+}
 fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
         method: 'POST',
         credentials: 'include',
@@ -9,9 +12,7 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
         headers: {
             'Content-Type': 'application/json',
         },
-        body: {
-            username: a.username
-        }
+        body: JSON.stringify(curUser)
     })
     .then(response => {
         return response.json();
@@ -21,7 +22,7 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
         console.log(skills);
     }).then(function fillInfo(){
         console.log(skills);
-        for(let i = 0; i< skills.duelerResponse.allSkills.length; i++){
+        for(let i = 0; i< skills.allSkills.length; i++){
 
         }
     });
