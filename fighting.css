@@ -53,6 +53,7 @@ body,
     justify-content: center;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .abl1 {
@@ -64,6 +65,7 @@ body,
     justify-content: center;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .abl2 {
@@ -75,6 +77,7 @@ body,
     justify-content: center;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .abl3 {
@@ -86,6 +89,7 @@ body,
     justify-content: center;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .fighter-1 {
@@ -198,6 +202,7 @@ body,
     margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
+    cursor: pointer;
 }
 
 .basic-attack .tooltiptext::after {
@@ -232,6 +237,7 @@ body,
     margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
+
 }
 
 .abl1 .tooltiptext::after {
@@ -248,6 +254,7 @@ body,
 .abl1:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+
 }
 
 .abl2 .tooltiptext {
@@ -266,6 +273,7 @@ body,
     margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
+
 }
 
 .abl2 .tooltiptext::after {
@@ -300,6 +308,7 @@ body,
     margin-left: -120px;
     opacity: 0;
     transition: opacity 0.3s;
+    
 }
 
 .abl3 .tooltiptext::after {
@@ -311,6 +320,7 @@ body,
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
+
 }
 
 .abl3:hover .tooltiptext {
@@ -359,6 +369,7 @@ body,
     align-items: center;
     justify-content: center;
     text-align: center;
+    cursor: pointer;
 }
 
 #close-overlay {
