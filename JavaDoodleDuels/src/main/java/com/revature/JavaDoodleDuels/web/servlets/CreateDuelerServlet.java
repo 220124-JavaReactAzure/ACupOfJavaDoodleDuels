@@ -65,7 +65,7 @@ public class CreateDuelerServlet {
 		}
 	}
 	
-	@GetMapping("/viewDuelers")
+	@PostMapping("/viewDuelers")
 	public String viewDuelers(@RequestBody UserResponse userResponse) {
 		
 		User currentUser = userService.findUserByUsername(userResponse.getUsername());
@@ -74,7 +74,7 @@ public class CreateDuelerServlet {
 		return gson.toJson(yourDuelers);
 	}
 	
-	@PostMapping("/viewDuelers")
+	@PostMapping("/selectDueler")
 	public ResponseEntity<Void> selectDueler(@RequestBody SelectDuelerRequest selectDuelerRequest, HttpSession httpSession){
 		User currentUser = (User) httpSession.getAttribute("authUser");
 		currentUser.setCurrentDuelerName(selectDuelerRequest.getDuelerName());
