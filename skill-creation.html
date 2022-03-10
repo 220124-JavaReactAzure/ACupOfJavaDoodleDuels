@@ -20,19 +20,26 @@
                 <input type="text" id="skill-name" class="skill-name"><br>
                 <label for="skill-type">Type: </label>
                 <input type="text" id="skill-type" class="skill-type"><br>
-                <label for="skill-stat-req">Stat Requirement: </label>
-                <input type="text" id="skill-stat-req" class="skill-stat-req"><br>
                 <label for="skill-base-damage">Base Damage: </label>
                 <input type="text" id="skill-base-damage" class="skill-base-damage"><br>
                 <label for="skill-scaling-damage">Scaling Damage: </label>
                 <input type="text" id="skill-scaling-damage" class="skill-scaling-damage"><br>
                 <label for="skill-scaling-req">Scaling Requirement: </label>
                 <input type="text" id="skill-scaling-req" class="skill-scaling-req"><br>
+                <label for="healing">Healing Spell?: </label>
+                <input type="text" id="healing" class="healing"><br>
+                <label for="manaCost">Mana Cost: </label>
+                <input type="text" id="manaCost" class="manaCost"><br>
+                <label for="description">Skill Description: </label>
+                <input type="text" id="description" class="description"><br>
 
-                <div id="submit" value="Create New skill" onclick="postDueler()">Create New Skill</div>
+
+                <div id="submit" value="Create New skill" onclick="createSkill()">Create New Skill</div>
+                <div id="submit" value="Create New skill" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/employee-test-home.html')">Return</div>
             </form>
         </div>
+        <div class="filler-div"></div>
     </div>
-    <script src="./character-creation.js"></script>
+    <script src="skill-creation.js"></script>
 </body>
 </html>
