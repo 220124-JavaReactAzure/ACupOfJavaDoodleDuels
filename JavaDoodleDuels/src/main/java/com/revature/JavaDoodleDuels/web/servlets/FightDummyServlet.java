@@ -41,7 +41,7 @@ public class FightDummyServlet {
 		this.skillService = skillService;
 	}
 
-	@GetMapping("/fighter1")
+	@PostMapping("/fighter1")
 	public String yourFighter(@RequestBody UserResponse userResponse) {
 		User currentUser = userService.findUserByUsername(userResponse.getUsername());
 		Dueler currentDueler = duelerService.findDuelerByName(currentUser.getCurrentDuelerName());

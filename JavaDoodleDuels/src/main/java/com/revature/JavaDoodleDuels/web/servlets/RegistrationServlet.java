@@ -62,7 +62,7 @@ public class RegistrationServlet {
 		}
 	}
 
-	@GetMapping("/updateUser")
+	@PostMapping("/getCurrentUser")
 	public String updateUser(@RequestBody UserResponse userResponse) {
 		User currentUser = userService.findUserByUsername(userResponse.getUsername());
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
