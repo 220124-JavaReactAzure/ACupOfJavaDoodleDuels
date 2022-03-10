@@ -19,19 +19,29 @@
                 <label for="skill-name">Skill Name: </label>
                 <input type="text" id="skill-name" class="skill-name"><br>
                 <label for="skill-type">Type: </label>
-                <input type="text" id="skill-type" class="skill-type"><br>
+                <select id="skill-type" class="skill-type">
+                    <option value="constitution">Constitution</option>
+                    <option value="wisdom">Wisdom</option>
+                    <option value="strength">Strength</option>
+                    <option value="intelligence">Intelligence</option>
+                    <option value="dexterity">Dexterity</option>
+                    <option value="charisma">Charisma</option>
+                </select><br/>
                 <label for="skill-base-damage">Base Damage: </label>
-                <input type="text" id="skill-base-damage" class="skill-base-damage"><br>
+                <input type="number" id="skill-base-damage" class="skill-base-damage"><br>
                 <label for="skill-scaling-damage">Scaling Damage: </label>
-                <input type="text" id="skill-scaling-damage" class="skill-scaling-damage"><br>
+                <input type="number" id="skill-scaling-damage" class="skill-scaling-damage"><br>
                 <label for="skill-scaling-req">Scaling Requirement: </label>
-                <input type="text" id="skill-scaling-req" class="skill-scaling-req"><br>
+                <input type="number" id="skill-scaling-req" class="skill-scaling-req" min="1" max="18"><br>
                 <label for="healing">Healing Spell?: </label>
-                <input type="text" id="healing" class="healing"><br>
+                <select id="healing" class="healing">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select><br/>
                 <label for="manaCost">Mana Cost: </label>
-                <input type="text" id="manaCost" class="manaCost"><br>
-                <label for="description">Skill Description: </label>
-                <input type="text" id="description" class="description"><br>
+                <input type="number" id="manaCost" class="manaCost" min="1" max="68"><br>
+                <label for="description">Skill Description: </label><br/>
+                <textarea id="description" class="description"></textarea>
 
 
                 <div id="submit" value="Create New skill" onclick="createSkill()">Create New Skill</div>

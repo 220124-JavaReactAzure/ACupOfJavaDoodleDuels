@@ -2,6 +2,7 @@
 
 function createSkill(){
     if(document.getElementById("skill-name").value.trim() === ""){
+        console.log(document.getElementById("description").value)
         alert("All input fields must be filled!");
     }else if(document.getElementById("skill-base-damage").value.trim() === ""){
         alert("All input fields must be filled!");
