@@ -1,17 +1,34 @@
+
+a = JSON.parse((localStorage.getItem("current_user")));
+console.log(a.username);
 var viewmyduelers
-fetch("https://java-doodle-duels.azurewebsites.net/viewDuelers")
+var curUser = {
+    username: a.username
+}
+fetch("https://java-doodle-duels.azurewebsites.net/viewDuelers",{
+        method: 'POST',
+        credentials: 'include',
+        origin: true,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(curUser)
+    })
     .then(response => {
         return response.json();
     }).then(data => {
-        console.log(data);
         viewmyduelers = data;
         console.log(viewmyduelers);
     }).then(function fillInfo(){
         console.log(viewmyduelers);
-        document.getElementById("duelerName").innerHTML = viewmyduelers.yourDuelers[i].duelerName;
-        document.getElementById("duelerImage").src = viewmyduelers.yourDuelers[i].duelerImage;
-        showhtmlElements();
+        for(let i = 0; i< viewmyduelers.yourDuelers.length; i++){
+            const newName = document.createElement("div")
+            const name = document.createTextNode(viewmyduelers.yourDuelers[i].duelerName);
+            newName.appendChild(name);
+            document.getElementById('container').innerHTML += newName;
+        }
     });
+
 
     var htmlElements = "";
 for (var i = 0; i < array.length; i++) {
@@ -19,10 +36,3 @@ for (var i = 0; i < array.length; i++) {
 }
 var viewmyduelers = document.getElementById("duelerImage");
 viewmyduelers.yourDuelers = htmlElements;
-
-    function logout(){
-        fetch("https://java-doodle-duels.azurewebsites.net/logout")
-            .then(function loginPage(){
-                window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/login.html')
-            });
-    }
