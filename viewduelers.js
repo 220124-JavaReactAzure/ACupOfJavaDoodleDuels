@@ -10,18 +10,15 @@ fetch("https://java-doodle-duels.azurewebsites.net/viewDuelers")
         console.log(viewmyduelers);
         document.getElementById("duelerName").innerHTML = viewmyduelers.yourDuelers[i].duelerName;
         document.getElementById("duelerImage").src = viewmyduelers.yourDuelers[i].duelerImage;
-        showSlides();
+        showhtmlElements();
     });
 
-    var slideIndex = 0;
-
-    function showSlides() {
-        if (slideIndex >= viewmyduelers.yourDuelers[i].length) {slideIndex = 0}
-        document.getElementById("duelerName").innerHTML = viewmyduelers.yourDuelers[slideIndex].duelerName;
-        document.getElementById("duelerImage").src = viewmyduelers.yourDuelers[slideIndex].duelerImage;
-        slideIndex++;  
-        setTimeout(showSlides, 10000); // Change image every 10 seconds
-      }
+    var htmlElements = "";
+for (var i = 0; i < array.length; i++) {
+   htmlElements += '<div class="box"></div>';
+}
+var viewmyduelers = document.getElementById("duelerImage");
+viewmyduelers.yourDuelers = htmlElements;
 
     function logout(){
         fetch("https://java-doodle-duels.azurewebsites.net/logout")
