@@ -21,18 +21,25 @@ fetch("https://java-doodle-duels.azurewebsites.net/viewDuelers",{
         console.log(viewmyduelers);
     }).then(function fillInfo(){
         console.log(viewmyduelers);
-        for(let i = 0; i< viewmyduelers.yourDuelers.length; i++){
-            const newName = document.createElement("div")
-            const name = document.createTextNode(viewmyduelers.yourDuelers[i].duelerName);
+        for(let i = 0; i< viewmyduelers.length; i++){
+            const newName = document.createElement("p")
+            const name = document.createTextNode(viewmyduelers[i].duelerName);
             newName.appendChild(name);
-            document.getElementById('container').innerHTML += newName;
+            const currentDiv = document.getElementById("container");
+            console.log(newName);
+            console.log(currentDiv);
+            document.main.insertBefore(newName, currentDiv);
+            const newImg = document.createElement("img")
+            const img = document.createTextNode(viewmyduelers[i].duelerImage);
+            newName.appendChild(img);
+            document.main.insertBefore(img, currentDiv);
         }
     });
 
 
-    var htmlElements = "";
-for (var i = 0; i < array.length; i++) {
-   htmlElements += '<div class="box"></div>';
-}
-var viewmyduelers = document.getElementById("duelerImage");
-viewmyduelers.yourDuelers = htmlElements;
+//     var htmlElements = "";
+// for (var i = 0; i < array.length; i++) {
+//    htmlElements += '<div class="box"></div>';
+// }
+// var viewmyduelers = document.getElementById("duelerImage");
+// viewmyduelers.yourDuelers = htmlElements;

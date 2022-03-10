@@ -6,26 +6,26 @@ var curUser = {
     username: a.username
 }
 
-fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
-        method: 'POST',
-        credentials: 'include',
-        origin: true,
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(curUser)
-    })
+fetch("https://java-doodle-duels.azurewebsites.net/getSkills", {
+    method: 'POST',
+    credentials: 'include',
+    origin: true,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(curUser)
+})
     .then(response => {
         return response.json();
     }).then(data => {
         console.log(document.cookie);
         skills = data;
         console.log(skills);
-    }).then(function fillInfo(){
+    }).then(function fillInfo() {
         console.log(skills);
-        for(let i = 1; i < 4; i++) {
+        for (let i = 1; i < 4; i++) {
             let currentSelect = document.getElementById(`skill${i}`)
-            for(let j = 0; j < skills.allSkills.length; j++){
+            for (let j = 0; j < skills.allSkills.length; j++) {
                 let newSkillOption = document.createElement("option");
                 let optionText = document.createTextNode(skills.allSkills[j].skillName);
 
@@ -44,14 +44,14 @@ function randomNum() {
 
     return random;
 }
-function randomHPMP(){
+function randomHPMP() {
     let random = Math.floor(Math.random() * 20) + 30;
     return random;
 }
 
 const stats = ["constitution", "wisdom", "strength", "dexterity", "intelligence", "charisma"];
 
-for(let s in stats) {
+for (let s in stats) {
     document.getElementById(`${stats[s]}Stat`).innerHTML = randomNum();
 }
 
@@ -88,46 +88,46 @@ document.getElementById("character-img").onchange = evt => {
         const formdata = new FormData()
         formdata.append("image", file)
         fetch("https://api.imgur.com/3/image/", {
-                method: "post",
-                headers: {
-                    Authorization: "Client-ID ac8deb7f4d99ebb"
-                },
-                body: formdata
-            }).then(data => data.json()).then(data => {
-                blobImage = data.data.link
-                console.log(blobImage);
-            })
+            method: "post",
+            headers: {
+                Authorization: "Client-ID ac8deb7f4d99ebb"
+            },
+            body: formdata
+        }).then(data => data.json()).then(data => {
+            blobImage = data.data.link
+            console.log(blobImage);
+        })
         console.log(blobImage);
     }
-  }
+}
 
-function postDueler(){
-   
+function postDueler() {
+
     let errors = false;
     let error_message = "";
 
-    if(document.getElementById("character-name").value.trim() === "") {
+    if (document.getElementById("character-name").value.trim() === "") {
         errors = true;
         error_message += "You gave invalid input for your character name. Please provide a name for your character.\n\n";
-    } 
-    
-    if(document.getElementById("character-img").files.length === 0) {
+    }
+
+    if (document.getElementById("character-img").files.length === 0) {
         errors = true;
         error_message += "You did not supply an image for your character. Please give us an image to associate with your character.\n\n"
     }
-    
-    if(document.getElementById("skillOne").value === "Choose a Skill" || document.getElementById("skillTwo").value === "Choose a Skill" || document.getElementById("skillThree").value === "Choose a Skill") {
+
+    if (document.getElementById("skill1").value === "Choose a Skill" || document.getElementById("skill2").value === "Choose a Skill" || document.getElementById("skill3").value === "Choose a Skill") {
         errors = true;
         error_message += "You did not choose one or more skills for your character. Please make sure you choose your skills for your character.\n\n";
     }
 
-    if(errors == true) {
+    if (errors == true) {
         alert(error_message);
     } else {
         const data = {
             duelerName: document.getElementById("character-name").value,
-            accountNumber: skills.userID,  
-            duelerImage: blobImage,   
+            accountNumber: skills.userID,
+            duelerImage: blobImage,
             strength: document.getElementById("strengthStat").innerHTML,
             dexterity: document.getElementById("dexterityStat").innerHTML,
             constitution: document.getElementById("constitutionStat").innerHTML,
@@ -136,22 +136,31 @@ function postDueler(){
             charisma: document.getElementById("charismaStat").innerHTML,
             maxHealth: document.getElementById('hp').innerHTML,
             maxMana: document.getElementById('mp').innerHTML,
-            skillOne: document.getElementById("skillOne").value,
-            skillTwo: document.getElementById("skillTwo").value,
-            skillThree: document.getElementById("skillThree").value, 
+            skillOne: document.getElementById("skill1").value,
+            skillTwo: document.getElementById("skill2").value,
+            skillThree: document.getElementById("skill3").value,
             isDummy: false
-        }   
-        console.log(data);
-        const requestOptions = {
+        }
+        fetch("https://java-doodle-duels.azurewebsites.net/createDueler", {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json',
-                       'Access-Control-Allow-Origin': 'http://localhost:6060',
-                       'Access-Control-Allow-Methods':'GET, OPTIONS, POST, PUT'},
+            credentials: 'include',
+            origin: true,
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(data)
-        };
-        fetch('http://localhost:6060/createDueler', requestOptions);
+        })
+            .then(response => {
+                return response.json();
+            }).then(function(response){
+                if(response.status === 201){
+                    window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html');
+            }else{
+                alert("Dueler name is taken!");
+            }
+        });   
     }
-    
+
 }
 
 
