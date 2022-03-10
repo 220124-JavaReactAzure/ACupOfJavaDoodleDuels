@@ -26,6 +26,7 @@ import com.revature.JavaDoodleDuels.services.UserService;
 import com.revature.JavaDoodleDuels.web.dto.DuelerRequest;
 import com.revature.JavaDoodleDuels.web.dto.DuelerResponse;
 import com.revature.JavaDoodleDuels.web.dto.SelectDuelerRequest;
+import com.revature.JavaDoodleDuels.web.dto.UserResponse;
 
 @RestController
 public class CreateDuelerServlet {
@@ -44,13 +45,9 @@ public class CreateDuelerServlet {
 	}
 	
 	@GetMapping("/createDueler")
-	public String duelerSkills(HttpServletRequest req) {
-		HttpSession httpSession = req.getSession(false);
-		if(httpSession == null) {
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			return gson.toJson("No Session Found");
-		}
-		User currentUser = (User) httpSession.getAttribute("authUser");
+	public String duelerSkills(@RequestBody UserResponse userResponse) {
+		
+		User currentUser = userService.findUserByUsername(userResponse.getUsername());
 		List<Skill> allSkills = skillService.getAllSkills();
 		DuelerResponse duelerResponse = new DuelerResponse(currentUser.getAccountNumber(), allSkills);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -69,8 +66,9 @@ public class CreateDuelerServlet {
 	}
 	
 	@GetMapping("/viewDuelers")
-	public String viewDuelers(HttpSession httpSession) {
-		User currentUser = (User) httpSession.getAttribute("authUser");
+	public String viewDuelers(@RequestBody UserResponse userResponse) {
+		
+		User currentUser = userService.findUserByUsername(userResponse.getUsername());
 		List<Dueler> yourDuelers = duelerService.getDuelerByAccountNumber(currentUser.getAccountNumber());
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		return gson.toJson(yourDuelers);
