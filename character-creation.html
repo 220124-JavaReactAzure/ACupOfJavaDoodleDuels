@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="character-creation.css" />
   </head>
   <body>
+    <div class="skillOptions" style="text-align: center"><b>SKILLS</b><hr>
+      <div class="strength"><b>Strength</b><hr></div>
+      <div class="dexterity"><hr><b>Dexterity</b><hr></div>
+      <div class="constitution"><hr><b>Constitution</b><hr></div>
+      <div class="intelligence"><hr><b>Intelligence</b><hr></div>
+      <div class="wisdom"><hr><b>Wisdom</b><hr></div>
+      <div class="charisma"><hr><b>Charisma</b><hr></div>
+    </div>
     <div class="main-container">
       <header class="header-container">
         <h1 class="main-header">Create your Character!</h1>
@@ -21,11 +29,13 @@
           <label for="character-img">Submit an Image of your Character: </label>
           <input type="file" id="character-img" class="character-img" /><br />
           <h4>Here are your Randomly Generated Stats!</h4>
-          <p>Constitution: <span id="constitutionStat"></span></p>
-          <p>Wisdom: <span id="wisdomStat"></span></p>
+          <p>Max Health: <span id="hp"></span></p>
+          <p>Max Mana: <span id="mp"></span></p>
           <p>Strength: <span id="strengthStat"></span></p>
           <p>Dexterity: <span id="dexterityStat"></span></p>
+          <p>Constitution: <span id="constitutionStat"></span></p>
           <p>Intelligence: <span id="intelligenceStat"></span></p>
+          <p>Wisdom: <span id="wisdomStat"></span></p>
           <p>Charisma: <span id="charismaStat"></span></p>
           <label>Select Skill 1: </label>
           <select class="skillOne" id="skillOne"></select

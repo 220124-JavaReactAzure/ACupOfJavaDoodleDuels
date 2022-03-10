@@ -2,6 +2,7 @@ package com.revature.JavaDoodleDuels.web.servlets;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +44,12 @@ public class CreateDuelerServlet {
 	}
 	
 	@GetMapping("/createDueler")
-	public String duelerSkills(HttpSession httpSession) {
+	public String duelerSkills(HttpServletRequest req) {
+		HttpSession httpSession = req.getSession(false);
+		if(httpSession == null) {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			return gson.toJson("No Session Found");
+		}
 		User currentUser = (User) httpSession.getAttribute("authUser");
 		List<Skill> allSkills = skillService.getAllSkills();
 		DuelerResponse duelerResponse = new DuelerResponse(currentUser.getAccountNumber(), allSkills);
