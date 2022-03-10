@@ -27,12 +27,11 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
             let currentSelect = document.getElementById(`skill${i}`)
             for(let j = 0; j < skills.allSkills.length; j++){
                 let newSkillOption = document.createElement("option");
-                let optionText = skills.allSkills[j].skillName;
+                let optionText = document.createTextNode(skills.allSkills[j].skillName);
 
                 newSkillOption.appendChild(optionText);
                 newSkillOption.setAttribute('value', `${optionText}`);
-
-                currentSelect.appendChild(newSkillOption);
+                currentSelect.add(newSkillOption);
             }
         }
     });
@@ -127,7 +126,7 @@ function postDueler(){
     } else {
         const data = {
             duelerName: document.getElementById("character-name").value,
-            accountNumber: 1,  
+            accountNumber: skills.userID,  
             duelerImage: blobImage,   
             strength: document.getElementById("strengthStat").innerHTML,
             dexterity: document.getElementById("dexterityStat").innerHTML,
