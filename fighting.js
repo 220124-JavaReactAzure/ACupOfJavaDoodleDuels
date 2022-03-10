@@ -447,11 +447,25 @@ function botAttack(){
 function onWin() {
     document.getElementById("overlay").style.display = "flex";
     document.getElementById("winOrLose").innerHTML = "!!! YOU WIN !!!";
+    window.open(<a target="_blank"
+    class="twitter-share-button"
+    href="https://twitter.com/intent/tweet?text=Victory tastes like tacos, i just cat squished a doodle warrior on JavaDoodleDuels, come join the fight!!"
+    data-size="large"
+  >          
+
+    </a>);
 }
 
 function onLose() {
     document.getElementById("overlay").style.display = "flex";
     document.getElementById("winOrLose").innerHTML = "!!! YOU LOSE !!!";
+    window.open(<a target="_blank"
+    class="twitter-share-button"
+    href="https://twitter.com/intent/tweet?text= You lost , i just got cat squished by doodle warrior on JavaDoodleDuels, come join the fight!!"
+    data-size="large"
+  >          
+
+    </a>);
 }
 
 function off() {
