@@ -6,6 +6,9 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills",{
         method: 'POST',
         credentials: 'include',
         origin: true,
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: {
             username: a.username
         }
