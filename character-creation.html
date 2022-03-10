@@ -28,22 +28,35 @@
           <p>Intelligence: <span id="intelligenceStat"></span></p>
           <p>Charisma: <span id="charismaStat"></span></p>
           <label>Select Skill 1: </label>
-          <select class="skillOne" id="skillOne"></select
+          <select class="skillOne" id="skillOne">
+            <option value="Choose a Skill">Choose a Skill</option></select
           ><br />
           <label>Select Skill 2: </label>
-          <select class="skillTwo" id="skillTwo"></select
+          <select class="skillTwo" id="skillTwo">
+            <option value="Choose a Skill">Choose a Skill</option></select
           ><br />
           <label>Select Skill 3: </label>
-          <select class="skillThree" id="skillThree"></select
+          <select class="skillThree" id="skillThree">
+            <option value="Choose a Skill">Choose a Skill</option></select
           ><br />
           <input type="hidden" id="accountNumber" />
           <input type="hidden" id="isDummy" />
-          <input type="submit" value="Create your Character" onclick="postDueler()"/>
-        
+          <input
+            type="submit"
+            value="Create your Character"
+            onclick="postDueler()"
+          />
         </form>
-        <div class="redirect-link" id="submit" value="homepage" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html')">Return to Homepage</div>
+        <div
+          class="redirect-link"
+          id="submit"
+          value="homepage"
+          onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html')"
+        >
+          Return to Homepage
+        </div>
       </div>
-      
+
       <div class="filler-div"></div>
     </div>
     <script src="./character-creation.js"></script>

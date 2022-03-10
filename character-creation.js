@@ -60,7 +60,6 @@ function postDueler(){
     let errors = false;
     let error_message = "";
 
-    
     if(document.getElementById("character-name").value.trim() === "") {
         errors = true;
         error_message += "You gave invalid input for your character name. Please provide a name for your character.\n\n";
@@ -71,6 +70,11 @@ function postDueler(){
         error_message += "You did not supply an image for your character. Please give us an image to associate with your character.\n\n"
     }
     
+    if(document.getElementById("skillOne").value === "Choose a Skill" || document.getElementById("skillTwo").value === "Choose a Skill" || document.getElementById("skillThree").value === "Choose a Skill") {
+        errors = true;
+        error_message += "You did not choose one or more skills for your character. Please make sure you choose your skills for your character.\n\n";
+    }
+
     if(errors == true) {
         alert(error_message);
     } else {
