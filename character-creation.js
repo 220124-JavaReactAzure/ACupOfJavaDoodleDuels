@@ -57,32 +57,50 @@ document.getElementById("character-img").onchange = evt => {
   }
 
 function postDueler(){
-    const data = {
-        duelerName: document.getElementById("character-name").value,
-        accountNumber: 1,  
-	    duelerImage: blobImage,   
-    	strength: document.getElementById("strengthStat").innerHTML,
-	    dexterity: document.getElementById("dexterityStat").innerHTML,
-    	constitution: document.getElementById("constitutionStat").innerHTML,
-	    wisdom: document.getElementById("wisdomStat").innerHTML,
-    	intelligence: document.getElementById("intelligenceStat").innerHTML,
-	    charisma: document.getElementById("charismaStat").innerHTML,
-    	maxHealth: 30 + Number(document.getElementById("constitutionStat").innerHTML),
-	    maxMana: 30 + Number(document.getElementById("wisdomStat").innerHTML),
-    	skillOne: document.getElementById("skillOne").value,
-	    skillTwo: document.getElementById("skillTwo").value,
-	    skillThree: document.getElementById("skillThree").value, 
-	    isDummy: false
-    }  
-    console.log(data);
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json',
-                   'Access-Control-Allow-Origin': 'http://localhost:6060',
-                   'Access-Control-Allow-Methods':'GET, OPTIONS, POST, PUT'},
-        body: JSON.stringify(data)
-    };
-    fetch('http://localhost:6060/createDueler', requestOptions);
+    let errors = false;
+    let error_message = "";
+
+    
+    if(document.getElementById("character-name").value.trim() === "") {
+        errors = true;
+        error_message += "You gave invalid input for your character name. Please provide a name for your character.\n\n";
+    } 
+    
+    if(document.getElementById("character-img").files.length === 0) {
+        errors = true;
+        error_message += "You did not supply an image for your character. Please give us an image to associate with your character.\n\n"
+    }
+    
+    if(errors == true) {
+        alert(error_message);
+    } else {
+        const data = {
+            duelerName: document.getElementById("character-name").value,
+            accountNumber: 1,  
+            duelerImage: blobImage,   
+            strength: document.getElementById("strengthStat").innerHTML,
+            dexterity: document.getElementById("dexterityStat").innerHTML,
+            constitution: document.getElementById("constitutionStat").innerHTML,
+            wisdom: document.getElementById("wisdomStat").innerHTML,
+            intelligence: document.getElementById("intelligenceStat").innerHTML,
+            charisma: document.getElementById("charismaStat").innerHTML,
+            maxHealth: 30 + Number(document.getElementById("constitutionStat").innerHTML),
+            maxMana: 30 + Number(document.getElementById("wisdomStat").innerHTML),
+            skillOne: document.getElementById("skillOne").value,
+            skillTwo: document.getElementById("skillTwo").value,
+            skillThree: document.getElementById("skillThree").value, 
+            isDummy: false
+        }  
+        console.log(data);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json',
+                       'Access-Control-Allow-Origin': 'http://localhost:6060',
+                       'Access-Control-Allow-Methods':'GET, OPTIONS, POST, PUT'},
+            body: JSON.stringify(data)
+        };
+        fetch('http://localhost:6060/createDueler', requestOptions);
+    }
     
 }
 
