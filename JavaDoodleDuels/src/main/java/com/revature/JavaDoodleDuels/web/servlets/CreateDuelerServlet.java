@@ -44,7 +44,7 @@ public class CreateDuelerServlet {
 		this.skillService = skillService;
 	}
 	
-	@GetMapping("/createDueler")
+	@PostMapping("/getSkills")
 	public String duelerSkills(@RequestBody UserResponse userResponse) {
 		
 		User currentUser = userService.findUserByUsername(userResponse.getUsername());
