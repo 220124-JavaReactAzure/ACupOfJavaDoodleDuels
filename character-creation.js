@@ -31,7 +31,7 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills", {
         let optionText = document.createTextNode(skills.allSkills[j].skillName);
 
         newSkillOption.appendChild(optionText);
-        newSkillOption.setAttribute("value", `${optionText}`);
+        newSkillOption.setAttribute("value", skills.allSkills[j].skillName);
         currentSelect.add(newSkillOption);
       }
     }
