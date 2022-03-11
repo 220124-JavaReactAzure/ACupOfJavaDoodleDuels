@@ -78,8 +78,8 @@ input, select {
 .skillOptions{
     position:absolute;
     top:35%;
-    left: 10%;
-    width:40%;
+    left: 3%;
+    width:20%;
     background:#777;
     padding: 45px;
     border:rgb(255, 238, 0) solid 5px;
