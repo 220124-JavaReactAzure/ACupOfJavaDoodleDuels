@@ -12,38 +12,62 @@
       <header class="header-container">
         <h1 class="main-header">Create your Character!</h1>
       </header>
+      <div class="skillOptions" style="text-align: center"><b>SKILLS</b><hr>
+        <div class="strength" id="strengthCategory"><b>Strength</b><hr></div>
+        <div class="dexterity" id="dexterityCategory"><hr><b>Dexterity</b><hr></div>
+        <div class="constitution" id="constitutionCategory"><hr><b>Constitution</b><hr></div>
+        <div class="intelligence" id="intelligenceCategory"><hr><b>Intelligence</b><hr></div>
+        <div class="wisdom" id="wisdomCategory"><hr><b>Wisdom</b><hr></div>
+        <div class="charisma" id="charismaCategory"><hr><b>Charisma</b><hr></div>
+      </div>
       <div class="form-div">
         <h2 class="previewImgHeader" id="previewImgHeader">Image Preview</h2>
         <img class="previewImg" id="previewImg" />
-        <form class="character-form">
+        <form class="character-form" action="">
           <label for="character-name">Character Name: </label>
           <input type="text" id="character-name" class="character-name" /><br />
           <label for="character-img">Submit an Image of your Character: </label>
           <input type="file" id="character-img" class="character-img" /><br />
           <h4>Here are your Randomly Generated Stats!</h4>
-          <p>Constitution: <span id="constitutionStat"></span></p>
-          <p>Wisdom: <span id="wisdomStat"></span></p>
+          <p>Max Health: <span id="hp"></span></p>
+          <p>Max Mana: <span id="mp"></span></p>
           <p>Strength: <span id="strengthStat"></span></p>
           <p>Dexterity: <span id="dexterityStat"></span></p>
+          <p>Constitution: <span id="constitutionStat"></span></p>
           <p>Intelligence: <span id="intelligenceStat"></span></p>
+          <p>Wisdom: <span id="wisdomStat"></span></p>
           <p>Charisma: <span id="charismaStat"></span></p>
           <label>Select Skill 1: </label>
-          <select class="skillOne" id="skillOne"></select
+          <select class="skillOne" id="skill1">
+            <option value="Choose a Skill">Choose a Skill</option></select
           ><br />
           <label>Select Skill 2: </label>
-          <select class="skillTwo" id="skillTwo"></select
+          <select class="skillTwo" id="skill2">
+            <option value="Choose a Skill">Choose a Skill</option></select
           ><br />
           <label>Select Skill 3: </label>
-          <select class="skillThree" id="skillThree"></select
+          <select class="skillThree" id="skill3">
+            <option value="Choose a Skill">Choose a Skill</option></select
           ><br />
           <input type="hidden" id="accountNumber" />
           <input type="hidden" id="isDummy" />
-          <input type="submit" value="Create your Character" onclick=PostDueler()/>
-        
+          <input
+            type="submit"
+            value="Create your Character"
+            onclick="postDueler()"
+          />
         </form>
+        <div
+          class="redirect-link"
+          id="submit"
+          value="homepage"
+          onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html')"
+        >
+          Return to Homepage
+        </div>
       </div>
-      <div id="submit" value="homepage" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html')">Return to Homepage</div>
-      <div class="filler-div"></div>
+
+    <div class="filler-div"></div>
     </div>
     <script src="./character-creation.js"></script>
   </body>

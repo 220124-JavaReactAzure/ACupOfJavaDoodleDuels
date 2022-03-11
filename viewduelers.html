@@ -9,19 +9,13 @@
 <body>
   
     <main>
-      
-        <div class="grid-container">
-            <div class="imageName"><b id="duelerName"></b></div>
-            <div class="feature">My Duelers</div>
-            <div class="images"><img src="" id="duelerImage"></div>
-        </div>           
-<div class="container">
+                
+<div class="container" id="container">
     <div></div>
-    <div id="submit" value="character-creation" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/character-creation.html')">Dueler Creation</div>
-    <div id="submit" value="account-info" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/account-info.html')">Account Info</div>
+    <select class="fighter" id="fighter">
+        <option value="Choose a fighter">Choose a Fighter</option></select>
+        <div id="submit" value="select" onclick="selectDueler()">Select Fighter</div>
     <div id="submit" value="homepage" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html')">Return to Homepage</div>
-    <div id="submit" value="Training Mode" onclick="window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/fighting.html')">Training Mode</div>
-    <div id="submit" value="registration" onclick="logout()">Logout</div>
 </div>
 
 </main>

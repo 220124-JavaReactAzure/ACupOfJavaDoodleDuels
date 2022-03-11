@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,7 @@ import com.revature.JavaDoodleDuels.services.DuelerService;
 import com.revature.JavaDoodleDuels.services.SkillService;
 import com.revature.JavaDoodleDuels.services.UserService;
 import com.revature.JavaDoodleDuels.web.dto.FighterResponse;
+import com.revature.JavaDoodleDuels.web.dto.UserResponse;
 
 @RestController
 
@@ -39,9 +41,9 @@ public class FightDummyServlet {
 		this.skillService = skillService;
 	}
 
-	@GetMapping("/fighter1")
-	public String yourFighter(HttpSession httpSession) {
-		User currentUser = (User) httpSession.getAttribute("authUser");
+	@PostMapping("/fighter1")
+	public String yourFighter(@RequestBody UserResponse userResponse) {
+		User currentUser = userService.findUserByUsername(userResponse.getUsername());
 		Dueler currentDueler = duelerService.findDuelerByName(currentUser.getCurrentDuelerName());
 		Skill skillOne = skillService.findSkillBySkillName(currentDueler.getSkillOne());
 		Skill skillTwo = skillService.findSkillBySkillName(currentDueler.getSkillTwo());

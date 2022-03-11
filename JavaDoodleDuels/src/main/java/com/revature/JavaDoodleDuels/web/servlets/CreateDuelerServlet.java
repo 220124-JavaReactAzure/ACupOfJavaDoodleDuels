@@ -2,6 +2,7 @@ package com.revature.JavaDoodleDuels.web.servlets;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -25,6 +26,7 @@ import com.revature.JavaDoodleDuels.services.UserService;
 import com.revature.JavaDoodleDuels.web.dto.DuelerRequest;
 import com.revature.JavaDoodleDuels.web.dto.DuelerResponse;
 import com.revature.JavaDoodleDuels.web.dto.SelectDuelerRequest;
+import com.revature.JavaDoodleDuels.web.dto.UserResponse;
 
 @RestController
 public class CreateDuelerServlet {
@@ -42,9 +44,10 @@ public class CreateDuelerServlet {
 		this.skillService = skillService;
 	}
 	
-	@GetMapping("/createDueler")
-	public String duelerSkills(HttpSession httpSession) {
-		User currentUser = (User) httpSession.getAttribute("authUser");
+	@PostMapping("/getSkills")
+	public String duelerSkills(@RequestBody UserResponse userResponse) {
+		
+		User currentUser = userService.findUserByUsername(userResponse.getUsername());
 		List<Skill> allSkills = skillService.getAllSkills();
 		DuelerResponse duelerResponse = new DuelerResponse(currentUser.getAccountNumber(), allSkills);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -62,20 +65,20 @@ public class CreateDuelerServlet {
 		}
 	}
 	
-	@GetMapping("/viewDuelers")
-	public String viewDuelers(HttpSession httpSession) {
-		User currentUser = (User) httpSession.getAttribute("authUser");
+	@PostMapping("/viewDuelers")
+	public String viewDuelers(@RequestBody UserResponse userResponse) {
+		
+		User currentUser = userService.findUserByUsername(userResponse.getUsername());
 		List<Dueler> yourDuelers = duelerService.getDuelerByAccountNumber(currentUser.getAccountNumber());
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		return gson.toJson(yourDuelers);
 	}
 	
-	@PostMapping("/viewDuelers")
-	public ResponseEntity<Void> selectDueler(@RequestBody SelectDuelerRequest selectDuelerRequest, HttpSession httpSession){
-		User currentUser = (User) httpSession.getAttribute("authUser");
+	@PostMapping("/selectDueler")
+	public ResponseEntity<Void> selectDueler(@RequestBody SelectDuelerRequest selectDuelerRequest){
+		User currentUser = userService.findUserByUsername(selectDuelerRequest.getUsername());
 		currentUser.setCurrentDuelerName(selectDuelerRequest.getDuelerName());
 		userService.updateDueler(currentUser);
-		httpSession.setAttribute("authUser", currentUser);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 }

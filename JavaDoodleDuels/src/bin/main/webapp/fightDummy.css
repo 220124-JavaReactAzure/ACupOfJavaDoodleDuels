@@ -1,0 +1,377 @@
+body{
+    background-image: url("https://cdn.discordapp.com/attachments/946784294473453628/949039729435889704/background.jpeg"); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+html {
+     height: 100%
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+html,
+body,
+.grid-container {
+    height: 100%;
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.7fr 0.9fr 1.8fr 0.9fr 0.7fr;
+    grid-template-rows: 1.5fr 1.6fr 0.0fr 1.5fr 0.0fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". hp-mp1 . hp-mp2 ."
+    ". fighter-1 . fighter-2 ."
+    ". . . . ."
+    ". . fighting-area . ."
+    ". . . . .";
+}
+
+.fighting-area {
+    display: grid;
+    grid-template-columns: 0.5fr 1.7fr 0.6fr 1.7fr 0.5fr;
+    grid-template-rows: 0.5fr 1.7fr 0.6fr 1.7fr 0.5fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". . . . ."
+    ". basic-attack . abl1 ."
+    ". . . . ."
+    ". abl2 . abl3 ."
+    ". . . . .";
+    grid-area: fighting-area;
+}
+
+.basic-attack {
+    grid-area: basic-attack;
+    background-color: red;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.abl1 {
+    grid-area: abl1;
+    background-color: red;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.abl2 {
+    grid-area: abl2;
+    background-color: red;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.abl3 {
+    grid-area: abl3;
+    background-color: red;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.fighter-1 {
+    grid-area: fighter-1;
+}
+
+.fighter-2 {
+    grid-area: fighter-2;
+}
+
+.hp-mp1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2.2fr 0.3fr 0.3fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". . ."
+    ". . ."
+    "hp1 hp1 hp1"
+    "mp1 mp1 mp1";
+    grid-area: hp-mp1;
+}
+
+.hp1 {
+    grid-area: hp1;
+    background: linear-gradient(to right, red 100%, white 00%);
+    font-size: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.mp1 {
+    grid-area: mp1;
+    background: linear-gradient(to right, blue 100%, white 00%);
+    font-size: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hp-mp2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2.2fr 0.3fr 0.3fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". . ."
+    ". . ."
+    "hp2 hp2 hp2"
+    "mp2 mp2 mp2";
+    grid-area: hp-mp2;
+}
+
+.hp2 {
+    grid-area: hp2;
+    background: linear-gradient(to right, red 100%, white 00%);
+    font-size: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.mp2 {
+    grid-area: mp2;
+    background: linear-gradient(to right, blue 100%, white 00%);
+    font-size: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.basic-attack .tooltiptext {
+    visibility: hidden;
+    font-size: 2vh;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.basic-attack .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.basic-attack:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.abl1 .tooltiptext {
+    visibility: hidden;
+    font-size: 2vh;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.abl1 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.abl1:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.abl2 .tooltiptext {
+    visibility: hidden;
+    font-size: 2vh;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.abl2 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.abl2:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.abl3 .tooltiptext {
+    visibility: hidden;
+    font-size: 2vh;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.abl3 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.abl3:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+    font-size: 10vh;
+    color: white;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+}
+
+#you-win {
+    
+    width: 50%;
+    height: 50%;
+    font-size: 10vh;
+    position: inherit;
+    
+}
+
+#new-fight{
+    width: 10%;
+    height: 10%;
+    border-radius: 25px;
+    background-color: rgb(25, 0, 255);
+    font-size: 4vh;
+    display: flex;
+    position: relative;
+    top: 25px; 
+    right: 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#close-overlay {
+    
+    width: 10%;
+    height: 10%;
+    border-radius: 25px;
+    background-color: rgb(25, 0, 255);
+    font-size: 4vh;
+    position: relative; 
+    top: 25px; 
+    left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
