@@ -3,8 +3,9 @@ document.getElementById("maxHealth1").innerHTML = 100;
 document.getElementById("health1").innerHTML = 77;
 document.getElementById("maxMana1").innerHTML = 30;
 document.getElementById("mana1").innerHTML = 30;
-document.getElementById("fighter1").src = "https://cdn.discordapp.com/attachments/946784294473453628/948675790512459806/unknown.png";
-document.getElementById("fighterName1").innerHTML = "Docker Whale"
+document.getElementById("fighter1").src =
+  "https://cdn.discordapp.com/attachments/946784294473453628/948675790512459806/unknown.png";
+document.getElementById("fighterName1").innerHTML = "Docker Whale";
 
 //fighter 1 stats
 var fighter1Strength = 17;
@@ -15,11 +16,14 @@ var fighter1Intelligence = 18;
 var fighter1Charisma = 18;
 
 //fighter 1 basic attack
+
 document.getElementById("basicDesc").innerHTML = "Deal " + Math.floor(fighter1Strength / 2) + " physical damage";
 
+
 //fighter 1 skill 1
-document.getElementById("skill1").innerHTML = "Fireball"
-document.getElementById("abl1Desc").innerHTML = "Does 6 fire damage plus an additional 1 for every intelligence over 12. Costs 10 mana";
+document.getElementById("skill1").innerHTML = "Fireball";
+document.getElementById("abl1Desc").innerHTML =
+  "Does 6 fire damage plus an additional 1 for every intelligence over 12. Costs 10 mana";
 var abl1healing = 0;
 var abl1Damage = 6;
 var abl1Stat = "intelligence";
@@ -27,6 +31,7 @@ var abl1Scaling = 1;
 var abl1ScalingReq = 12;
 var abl1ManaCost = 10;
 if (abl1Stat == "strength") {
+
     abl1Damage = Number(abl1Damage) + ((fighter1Strength - abl1ScalingReq) * abl1Scaling);
 }
 else if (abl1Stat == "dexterity") {
@@ -43,11 +48,13 @@ else if (abl1Stat == "intelligence") {
 }
 else if (abl1Stat == "charisma") {
     abl1Damage = Number(abl1Damage) + ((fighter1Charisma - abl1ScalingReq) * abl1Scaling);
+
 }
 
 //fighter 1 skill 2
 document.getElementById("skill2").innerHTML = "Sucker Punch";
-document.getElementById("abl2Desc").innerHTML = "Does 4 physical damage plus an additional 2 for every strength over 15. Costs 8 mana";
+document.getElementById("abl2Desc").innerHTML =
+  "Does 4 physical damage plus an additional 2 for every strength over 15. Costs 8 mana";
 var abl2healing = 0;
 var abl2Damage = 4;
 var abl2Stat = "strength";
@@ -71,11 +78,13 @@ else if (abl2Stat == "intelligence") {
 }
 else if (abl2Stat == "charisma") {
     abl2Damage = Number(abl2Damage) + ((fighter1Charisma - abl2ScalingReq) * abl2Scaling);
+
 }
 
 //fighter 1 skill 3
 document.getElementById("skill3").innerHTML = "Cat Squish";
-document.getElementById("abl3Desc").innerHTML = "You take a break and squish a cat. Heal for 25. Costs 25 mana.";
+document.getElementById("abl3Desc").innerHTML =
+  "You take a break and squish a cat. Heal for 25. Costs 25 mana.";
 var abl3healing = 1;
 var abl3Damage = 25;
 var abl3Stat = "wisdom";
@@ -83,6 +92,7 @@ var abl3Scaling = 0;
 var abl3ScalingReq = 18;
 var abl3ManaCost = 25;
 if (abl3Stat == "strength") {
+
     abl3Damage = Number(abl3Damage) + ((fighter1Strength - abl3ScalingReq) * abl3Scaling);
 }
 else if (abl3Stat == "dexterity") {
@@ -99,6 +109,7 @@ else if (abl3Stat == "intelligence") {
 }
 else if (abl3Stat == "charisma") {
     abl3Damage = Number(abl3Damage) + ((fighter1Charisma - abl3ScalingReq) * abl3Scaling);
+
 }
 
 //fighter 2 core elements
@@ -106,8 +117,10 @@ document.getElementById("maxHealth2").innerHTML = 65;
 document.getElementById("health2").innerHTML = 65;
 document.getElementById("maxMana2").innerHTML = 75;
 document.getElementById("mana2").innerHTML = 75;
+
 document.getElementById("fighter2").src = "https://cdn.discordapp.com/attachments/946784294473453628/948677957025677372/unknown.png";
 document.getElementById("fighterName2").innerHTML = "Gordon The Turtle"
+
 
 //fighter 2 stats
 var fighter2Strength = 17;
@@ -128,6 +141,7 @@ var fighter2abl1Scaling = 1;
 var fighter2abl1ScalingReq = 12;
 var fighter2abl1ManaCost = 10;
 if (fighter2abl1Stat == "strength") {
+
     fighter2abl1Damage = Number(fighter2abl1Damage) + ((fighter2Strength - fighter2abl1ScalingReq) * fighter2abl1Scaling);
 }
 else if (fighter2abl1Stat == "dexterity") {
@@ -144,6 +158,7 @@ else if (fighter2abl1Stat == "intelligence") {
 }
 else if (fighter2abl1Stat == "charisma") {
     fighter2abl1Damage = Number(fighter2abl1Damage) + ((fighter2Charisma - fighter2abl1ScalingReq) * fighter2abl1Scaling);
+
 }
 
 //fighter 2 skill 2
@@ -154,6 +169,7 @@ var fighter2abl2Scaling = 2;
 var fighter2abl2ScalingReq = 15;
 var fighter2abl2ManaCost = 8;
 if (fighter2abl2Stat == "strength") {
+
     fighter2abl2Damage = Number(fighter2abl2Damage) + ((fighter2Strength - fighter2abl2ScalingReq) * fighter2abl2Scaling);
 }
 else if (fighter2abl2Stat == "dexterity") {
@@ -170,6 +186,7 @@ else if (fighter2abl2Stat == "intelligence") {
 }
 else if (fighter2abl2Stat == "charisma") {
     fighter2abl2Damage = Number(fighter2abl2Damage) + ((fighter2Charisma - fighter2abl2ScalingReq) * fighter2abl2Scaling);
+
 }
 
 //fighter 2 skill 3
@@ -544,21 +561,56 @@ function botAttack() {
         } else {
             botAttack();
         }
+
     }
+  }
 }
 
 
+window.twttr = (function (d, s, id) {
+  var js,
+    fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function (f) {
+    t._e.push(f);
+  };
+
+  return t;
+})(document, "script", "twitter-wjs");
 
 function onWin() {
-    document.getElementById("overlay").style.display = "flex";
-    document.getElementById("winOrLose").innerHTML = "!!! YOU WIN !!!";
+  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("winOrLose").innerHTML = "!!! YOU WIN !!!";
+  window.open(
+    <a
+      target="_blank"
+      class="twitter-share-button"
+      href="https://twitter.com/intent/tweet?text=Victory tastes like tacos, i just cat squished a doodle warrior on JavaDoodleDuels, come join the fight!!"
+      data-size="large"
+    ></a>
+  );
 }
 
 function onLose() {
-    document.getElementById("overlay").style.display = "flex";
-    document.getElementById("winOrLose").innerHTML = "!!! YOU LOSE !!!";
+  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("winOrLose").innerHTML = "!!! YOU LOSE !!!";
+  window.open(
+    <a
+      target="_blank"
+      class="twitter-share-button"
+      href="https://twitter.com/intent/tweet?text=Victory tastes like tacos, i just cat squished a doodle warrior on JavaDoodleDuels, come join the fight!!"
+      data-size="large"
+    ></a>
+  );
 }
 
 function off() {
-    document.getElementById("overlay").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
 }
