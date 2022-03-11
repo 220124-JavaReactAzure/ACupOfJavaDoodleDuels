@@ -25,14 +25,23 @@ fetch("https://java-doodle-duels.azurewebsites.net/viewDuelers",{
             const newName = document.createElement("p")
             const name = document.createTextNode(viewmyduelers[i].duelerName);
             newName.appendChild(name);
-            const currentDiv = document.getElementById("container");
+            newName.classList.add("duelerNames");
+            const container = document.getElementById("container");
+            const fighterSelect = document.getElementById("fighter");
             console.log(newName);
-            console.log(currentDiv);
-            document.main.insertBefore(newName, currentDiv);
+            console.log(fighterSelect);
+            container.insertBefore(newName, fighterSelect);
             const newImg = document.createElement("img")
-            const img = document.createTextNode(viewmyduelers[i].duelerImage);
-            newName.appendChild(img);
-            document.main.insertBefore(img, currentDiv);
+            newImg.src = viewmyduelers[i].duelerImage;
+            newName.classList.add("duelerImages");
+            container.insertBefore(newImg, fighterSelect);
+
+            let newFighterOption = document.createElement("option");
+            const nameDropdown = document.createTextNode(viewmyduelers[i].duelerName);
+            newFighterOption.appendChild(nameDropdown);
+            newFighterOption.setAttribute('value', `${nameDropdown}`);
+            document.getElementById("fighter").add(newFighterOption);
+
         }
     });
 
