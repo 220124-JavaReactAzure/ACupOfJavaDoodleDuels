@@ -1,4 +1,3 @@
-
 a = JSON.parse((localStorage.getItem("current_user")));
 console.log(a.username);
 var dueler1
@@ -151,13 +150,16 @@ fetch("https://java-doodle-duels.azurewebsites.net/fighter1", {
 
     });
 
+
 //fighter 2 core elements
 document.getElementById("maxHealth2").innerHTML = 65;
 document.getElementById("health2").innerHTML = 65;
 document.getElementById("maxMana2").innerHTML = 75;
 document.getElementById("mana2").innerHTML = 75;
+
 document.getElementById("fighter2").src = "https://cdn.discordapp.com/attachments/946784294473453628/948677957025677372/unknown.png";
 document.getElementById("fighterName2").innerHTML = "Gordon The Turtle"
+
 
 //fighter 2 stats
 var fighter2Strength = 17;
@@ -178,6 +180,7 @@ var fighter2abl1Scaling = 1;
 var fighter2abl1ScalingReq = 12;
 var fighter2abl1ManaCost = 10;
 if (fighter2abl1Stat == "strength") {
+
     fighter2abl1Damage = Number(fighter2abl1Damage) + ((fighter2Strength - fighter2abl1ScalingReq) * fighter2abl1Scaling);
 }
 else if (fighter2abl1Stat == "dexterity") {
@@ -194,6 +197,7 @@ else if (fighter2abl1Stat == "intelligence") {
 }
 else if (fighter2abl1Stat == "charisma") {
     fighter2abl1Damage = Number(fighter2abl1Damage) + ((fighter2Charisma - fighter2abl1ScalingReq) * fighter2abl1Scaling);
+
 }
 
 //fighter 2 skill 2
@@ -204,6 +208,7 @@ var fighter2abl2Scaling = 2;
 var fighter2abl2ScalingReq = 15;
 var fighter2abl2ManaCost = 8;
 if (fighter2abl2Stat == "strength") {
+
     fighter2abl2Damage = Number(fighter2abl2Damage) + ((fighter2Strength - fighter2abl2ScalingReq) * fighter2abl2Scaling);
 }
 else if (fighter2abl2Stat == "dexterity") {
@@ -220,6 +225,7 @@ else if (fighter2abl2Stat == "intelligence") {
 }
 else if (fighter2abl2Stat == "charisma") {
     fighter2abl2Damage = Number(fighter2abl2Damage) + ((fighter2Charisma - fighter2abl2ScalingReq) * fighter2abl2Scaling);
+
 }
 
 //fighter 2 skill 3
@@ -598,21 +604,56 @@ function botAttack() {
         } else {
             botAttack();
         }
+
     }
+  }
 }
 
 
+window.twttr = (function (d, s, id) {
+  var js,
+    fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function (f) {
+    t._e.push(f);
+  };
+
+  return t;
+})(document, "script", "twitter-wjs");
 
 function onWin() {
-    document.getElementById("overlay").style.display = "flex";
-    document.getElementById("winOrLose").innerHTML = "!!! YOU WIN !!!";
+  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("winOrLose").innerHTML = "!!! YOU WIN !!!";
+  window.open(
+    <a
+      target="_blank"
+      class="twitter-share-button"
+      href="https://twitter.com/intent/tweet?text=Victory tastes like tacos, i just cat squished a doodle warrior on JavaDoodleDuels, come join the fight!!"
+      data-size="large"
+    ></a>
+  );
 }
 
 function onLose() {
-    document.getElementById("overlay").style.display = "flex";
-    document.getElementById("winOrLose").innerHTML = "!!! YOU LOSE !!!";
+  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("winOrLose").innerHTML = "!!! YOU LOSE !!!";
+  window.open(
+    <a
+      target="_blank"
+      class="twitter-share-button"
+      href="https://twitter.com/intent/tweet?text=Victory tastes like tacos, i just cat squished a doodle warrior on JavaDoodleDuels, come join the fight!!"
+      data-size="large"
+    ></a>
+  );
 }
 
 function off() {
-    document.getElementById("overlay").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
 }
