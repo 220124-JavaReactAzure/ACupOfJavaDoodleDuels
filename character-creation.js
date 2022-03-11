@@ -49,18 +49,18 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills", {
           newH4.appendChild(skillNameText);
           newP.appendChild(skillDescText);
 
-          newDiv.add(newH4);
-          newDiv.add(newP);
-          strengthCategory.add(newDiv);
+          newDiv.appendChild(newH4);
+          newDiv.appendChild(newP);
+          strengthCategory.appendChild(newDiv);
           break;
         case "dexterity":
           let dexterityCategory = document.getElementById("dexterityCategory");
           newH4.appendChild(skillNameText);
           newP.appendChild(skillDescText);
 
-          newDiv.add(newH4);
-          newDiv.add(newP);
-          dexterityCategory.add(newDiv);
+          newDiv.appendChild(newH4);
+          newDiv.appendChild(newP);
+          dexterityCategory.appendChild(newDiv);
           break;
         case "constitution":
           let constitutionCategory = document.getElementById(
@@ -69,9 +69,9 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills", {
           newH4.appendChild(skillNameText);
           newP.appendChild(skillDescText);
 
-          newDiv.add(newH4);
-          newDiv.add(newP);
-          constitutionCategory.add(newDiv);
+          newDiv.appendChild(newH4);
+          newDiv.appendChild(newP);
+          constitutionCategory.appendChild(newDiv);
           break;
         case "intelligence":
           let intelligenceCategory = document.getElementById(
@@ -80,27 +80,27 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills", {
           newH4.appendChild(skillNameText);
           newP.appendChild(skillDescText);
 
-          newDiv.add(newH4);
-          newDiv.add(newP);
-          intelligenceCategory.add(newDiv);
+          newDiv.appendChild(newH4);
+          newDiv.appendChild(newP);
+          intelligenceCategory.appendChild(newDiv);
           break;
         case "wisdom":
           let wisdomCategory = document.getElementById("wisdomCategory");
           newH4.appendChild(skillNameText);
           newP.appendChild(skillDescText);
 
-          newDiv.add(newH4);
-          newDiv.add(newP);
-          wisdomCategory.add(newDiv);
+          newDiv.appendChild(newH4);
+          newDiv.appendChild(newP);
+          wisdomCategory.appendChild(newDiv);
           break;
         case "charisma":
           let charismaCategory = document.getElementById("charismaCategory");
           newH4.appendChild(skillNameText);
           newP.appendChild(skillDescText);
 
-          newDiv.add(newH4);
-          newDiv.add(newP);
-          charismaCategory.add(newDiv);
+          newDiv.appendChild(newH4);
+          newDiv.appendChild(newP);
+          charismaCategory.appendChild(newDiv);
           break;
       }
     }

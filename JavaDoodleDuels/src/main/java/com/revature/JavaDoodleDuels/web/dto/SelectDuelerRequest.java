@@ -4,14 +4,16 @@ import java.util.Objects;
 
 public class SelectDuelerRequest {
 	
+	private String username;
 	private String duelerName;
 
 	public SelectDuelerRequest() {
 		super();
 	}
 
-	public SelectDuelerRequest(String duelerName) {
+	public SelectDuelerRequest(String username, String duelerName) {
 		super();
+		this.username = username;
 		this.duelerName = duelerName;
 	}
 
@@ -23,14 +25,22 @@ public class SelectDuelerRequest {
 		this.duelerName = duelerName;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@Override
 	public String toString() {
-		return "SelectDuelerRequest [duelerName=" + duelerName + "]";
+		return "SelectDuelerRequest [username=" + username + ", duelerName=" + duelerName + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(duelerName);
+		return Objects.hash(duelerName, username);
 	}
 
 	@Override
@@ -42,7 +52,9 @@ public class SelectDuelerRequest {
 		if (getClass() != obj.getClass())
 			return false;
 		SelectDuelerRequest other = (SelectDuelerRequest) obj;
-		return Objects.equals(duelerName, other.duelerName);
+		return Objects.equals(duelerName, other.duelerName) && Objects.equals(username, other.username);
 	}
+
+
 
 }

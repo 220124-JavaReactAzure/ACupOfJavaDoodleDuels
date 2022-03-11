@@ -75,11 +75,10 @@ public class CreateDuelerServlet {
 	}
 	
 	@PostMapping("/selectDueler")
-	public ResponseEntity<Void> selectDueler(@RequestBody SelectDuelerRequest selectDuelerRequest, HttpSession httpSession){
-		User currentUser = (User) httpSession.getAttribute("authUser");
+	public ResponseEntity<Void> selectDueler(@RequestBody SelectDuelerRequest selectDuelerRequest){
+		User currentUser = userService.findUserByUsername(selectDuelerRequest.getUsername());
 		currentUser.setCurrentDuelerName(selectDuelerRequest.getDuelerName());
 		userService.updateDueler(currentUser);
-		httpSession.setAttribute("authUser", currentUser);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 }

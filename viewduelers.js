@@ -37,9 +37,12 @@ fetch("https://java-doodle-duels.azurewebsites.net/viewDuelers",{
             container.insertBefore(newImg, fighterSelect);
 
             let newFighterOption = document.createElement("option");
-            const nameDropdown = document.createTextNode(viewmyduelers[i].duelerName);
-            newFighterOption.appendChild(nameDropdown);
-            newFighterOption.setAttribute('value', `${nameDropdown}`);
+
+            newFighterOption.appendChild(new Option(viewmyduelers[i].duelerName, viewmyduelers[i].duelerName))
+
+            // const nameDropdown = document.createTextNode(viewmyduelers[i].duelerName);
+            // newFighterOption.appendChild(nameDropdown);
+            // newFighterOption.setAttribute('value', nameDropdown.value);
             document.getElementById("fighter").add(newFighterOption);
 
         }
@@ -52,3 +55,27 @@ fetch("https://java-doodle-duels.azurewebsites.net/viewDuelers",{
 // }
 // var viewmyduelers = document.getElementById("duelerImage");
 // viewmyduelers.yourDuelers = htmlElements;
+
+function selectDueler(){
+
+    const data = {
+        username: a.username,
+        duelerName: document.getElementById("fighter").value
+    }
+
+    fetch("https://java-doodle-duels.azurewebsites.net/selectDueler",{
+        method: 'POST',
+        credentials: 'include',
+        origin: true,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    }).then(function(response){
+        if(response.status === 201){
+            window.location.replace('https://javadoodleduels.blob.core.windows.net/$web/homepage.html');
+        }else{
+            alert("Something terrible happened!");
+        }
+    });
+}
