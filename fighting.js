@@ -1,116 +1,155 @@
-//fighter 1 core elements
-document.getElementById("maxHealth1").innerHTML = 100;
-document.getElementById("health1").innerHTML = 77;
-document.getElementById("maxMana1").innerHTML = 30;
-document.getElementById("mana1").innerHTML = 30;
-document.getElementById("fighter1").src =
-  "https://cdn.discordapp.com/attachments/946784294473453628/948675790512459806/unknown.png";
-document.getElementById("fighterName1").innerHTML = "Docker Whale";
-
-//fighter 1 stats
-var fighter1Strength = 17;
-var fighter1Dexterity = 18;
-var fighter1Constitution = 18;
-var fighter1Wisdom = 18;
-var fighter1Intelligence = 18;
-var fighter1Charisma = 18;
-
-//fighter 1 basic attack
-
-document.getElementById("basicDesc").innerHTML = "Deal " + Math.floor(fighter1Strength / 2) + " physical damage";
-
-
-//fighter 1 skill 1
-document.getElementById("skill1").innerHTML = "Fireball";
-document.getElementById("abl1Desc").innerHTML =
-  "Does 6 fire damage plus an additional 1 for every intelligence over 12. Costs 10 mana";
-var abl1healing = 0;
-var abl1Damage = 6;
-var abl1Stat = "intelligence";
-var abl1Scaling = 1;
-var abl1ScalingReq = 12;
-var abl1ManaCost = 10;
-if (abl1Stat == "strength") {
-
-    abl1Damage = Number(abl1Damage) + ((fighter1Strength - abl1ScalingReq) * abl1Scaling);
-}
-else if (abl1Stat == "dexterity") {
-    abl1Damage = Number(abl1Damage) + ((fighter1Dexterity - abl1ScalingReq) * abl1Scaling);
-}
-else if (abl1Stat == "constitution") {
-    abl1Damage = Number(abl1Damage) + ((fighter1Constitution - abl1ScalingReq) * abl1Scaling);
-}
-else if (abl1Stat == "wisdom") {
-    abl1Damage = Number(abl1Damage) + ((fighter1Wisdom - abl1ScalingReq) * abl1Scaling);
-}
-else if (abl1Stat == "intelligence") {
-    abl1Damage = Number(abl1Damage) + ((fighter1Intelligence - abl1ScalingReq) * abl1Scaling);
-}
-else if (abl1Stat == "charisma") {
-    abl1Damage = Number(abl1Damage) + ((fighter1Charisma - abl1ScalingReq) * abl1Scaling);
-
+a = JSON.parse((localStorage.getItem("current_user")));
+console.log(a.username);
+var dueler1
+var curUser = {
+    username: a.username
 }
 
-//fighter 1 skill 2
-document.getElementById("skill2").innerHTML = "Sucker Punch";
-document.getElementById("abl2Desc").innerHTML =
-  "Does 4 physical damage plus an additional 2 for every strength over 15. Costs 8 mana";
-var abl2healing = 0;
-var abl2Damage = 4;
-var abl2Stat = "strength";
-var abl2Scaling = 2;
-var abl2ScalingReq = 15;
-var abl2ManaCost = 8;
-if (abl2Stat == "strength") {
-    abl2Damage = Number(abl2Damage) + ((fighter1Strength - abl2ScalingReq) * abl2Scaling);
-}
-else if (abl2Stat == "dexterity") {
-    abl2Damage = Number(abl2Damage) + ((fighter1Dexterity - abl2ScalingReq) * abl2Scaling);
-}
-else if (abl2Stat == "constitution") {
-    abl2Damage = Number(abl2Damage) + ((fighter1Constitution - abl2ScalingReq) * abl2Scaling);
-}
-else if (abl2Stat == "wisdom") {
-    abl2Damage = Number(abl2Damage) + ((fighter1Wisdom - abl2ScalingReq) * abl2Scaling);
-}
-else if (abl2Stat == "intelligence") {
-    abl2Damage = Number(abl2Damage) + ((fighter1Intelligence - abl2ScalingReq) * abl2Scaling);
-}
-else if (abl2Stat == "charisma") {
-    abl2Damage = Number(abl2Damage) + ((fighter1Charisma - abl2ScalingReq) * abl2Scaling);
+var fighter1Strength;
+var fighter1Dexterity;
+var fighter1Constitution;
+var fighter1Wisdom;
+var fighter1Intelligence;
+var fighter1Charisma;
+var abl1healing;
+var abl1Damage;
+var abl1Stat;
+var abl1Scaling;
+var abl1ScalingReq;
+var abl1ManaCost;
+var abl2healing;
+var abl2Damage;
+var abl2Stat;
+var abl2Scaling;
+var abl2ScalingReq;
+var abl2ManaCost;
+var abl3healing;
+var abl3Damage;
+var abl3Stat;
+var abl3Scaling;
+var abl3ScalingReq;
+var abl3ManaCost;
 
-}
+fetch("https://java-doodle-duels.azurewebsites.net/fighter1", {
+    method: 'POST',
+    credentials: 'include',
+    origin: true,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(curUser)
+})
+    .then(response => {
+        return response.json();
+    }).then(data => {
+        dueler1 = data;
+        console.log(dueler1);
+    }).then(function fillInfo() {
+        //fighter 1 core elements
+        document.getElementById("maxHealth1").innerHTML = dueler1.dueler.maxHealth;
+        document.getElementById("health1").innerHTML = dueler1.dueler.maxHealth;
+        document.getElementById("maxMana1").innerHTML = dueler1.dueler.maxMana;
+        document.getElementById("mana1").innerHTML = dueler1.dueler.maxMana;
+        document.getElementById("fighter1").src = dueler1.dueler.duelerImage;
+        document.getElementById("fighterName1").innerHTML = dueler1.dueler.duelerName;
 
-//fighter 1 skill 3
-document.getElementById("skill3").innerHTML = "Cat Squish";
-document.getElementById("abl3Desc").innerHTML =
-  "You take a break and squish a cat. Heal for 25. Costs 25 mana.";
-var abl3healing = 1;
-var abl3Damage = 25;
-var abl3Stat = "wisdom";
-var abl3Scaling = 0;
-var abl3ScalingReq = 18;
-var abl3ManaCost = 25;
-if (abl3Stat == "strength") {
+        //fighter 1 stats
+        fighter1Strength = dueler1.dueler.strength;
+        fighter1Dexterity = dueler1.dueler.dexterity;
+        fighter1Constitution = dueler1.dueler.constitution;
+        fighter1Wisdom = dueler1.dueler.wisdom;
+        fighter1Intelligence = dueler1.dueler.intelligence;
+        fighter1Charisma = dueler1.dueler.charisma;
 
-    abl3Damage = Number(abl3Damage) + ((fighter1Strength - abl3ScalingReq) * abl3Scaling);
-}
-else if (abl3Stat == "dexterity") {
-    abl3Damage = Number(abl3Damage) + ((fighter1Dexterity - abl3ScalingReq) * abl3Scaling);
-}
-else if (abl3Stat == "constitution") {
-    abl3Damage = Number(abl3Damage) + ((fighter1Constitution - abl3ScalingReq) * abl3Scaling);
-}
-else if (abl3Stat == "wisdom") {
-    abl3Damage = Number(abl3Damage) + ((fighter1Wisdom - abl3ScalingReq) * abl3Scaling);
-}
-else if (abl3Stat == "intelligence") {
-    abl3Damage = Number(abl3Damage) + ((fighter1Intelligence - abl3ScalingReq) * abl3Scaling);
-}
-else if (abl3Stat == "charisma") {
-    abl3Damage = Number(abl3Damage) + ((fighter1Charisma - abl3ScalingReq) * abl3Scaling);
+        //fighter 1 basic attack
+        document.getElementById("basicDesc").innerHTML = "Deal " + Math.floor(fighter1Strength / 2) + " physical damage";
 
-}
+        //fighter 1 skill 1
+        document.getElementById("skill1").innerHTML = dueler1.skillOne.skillName;
+        document.getElementById("abl1Desc").innerHTML = dueler1.skillOne.description;
+        abl1healing = dueler1.skillOne.healing;
+        abl1Damage = dueler1.skillOne.damage;
+        abl1Stat = dueler1.skillOne.damageStatType;
+        abl1Scaling = dueler1.skillOne.scaledDamage;
+        abl1ScalingReq = dueler1.skillOne.scalingRequirement;
+        abl1ManaCost = dueler1.skillOne.manaCost;
+        if (abl1Stat == "strength") {
+            abl1Damage = Number(abl1Damage) + ((fighter1Strength - abl1ScalingReq) * abl1Scaling);
+        }
+        else if (abl1Stat == "dexterity") {
+            abl1Damage = Number(abl1Damage) + ((fighter1Dexterity - abl1ScalingReq) * abl1Scaling);
+        }
+        else if (abl1Stat == "constitution") {
+            abl1Damage = Number(abl1Damage) + ((fighter1Constitution - abl1ScalingReq) * abl1Scaling);
+        }
+        else if (abl1Stat == "wisdom") {
+            abl1Damage = Number(abl1Damage) + ((fighter1Wisdom - abl1ScalingReq) * abl1Scaling);
+        }
+        else if (abl1Stat == "intelligence") {
+            abl1Damage = Number(abl1Damage) + ((fighter1Intelligence - abl1ScalingReq) * abl1Scaling);
+        }
+        else if (abl1Stat == "charisma") {
+            abl1Damage = Number(abl1Damage) + ((fighter1Charisma - abl1ScalingReq) * abl1Scaling);
+        }
+
+        //fighter 1 skill 2
+        document.getElementById("skill2").innerHTML = dueler1.skillTwo.skillName;
+        document.getElementById("abl2Desc").innerHTML = dueler1.skillTwo.description;
+        abl2healing = dueler1.skillTwo.healing;
+        abl2Damage = dueler1.skillTwo.damage;
+        abl2Stat = dueler1.skillTwo.damageStatType;
+        abl2Scaling = dueler1.skillTwo.scaledDamage;
+        abl2ScalingReq = dueler1.skillTwo.scalingRequirement;
+        abl2ManaCost = dueler1.skillTwo.manaCost;
+        if (abl2Stat == "strength") {
+            abl2Damage = Number(abl2Damage) + ((fighter1Strength - abl2ScalingReq) * abl2Scaling);
+        }
+        else if (abl2Stat == "dexterity") {
+            abl2Damage = Number(abl2Damage) + ((fighter1Dexterity - abl2ScalingReq) * abl2Scaling);
+        }
+        else if (abl2Stat == "constitution") {
+            abl2Damage = Number(abl2Damage) + ((fighter1Constitution - abl2ScalingReq) * abl2Scaling);
+        }
+        else if (abl2Stat == "wisdom") {
+            abl2Damage = Number(abl2Damage) + ((fighter1Wisdom - abl2ScalingReq) * abl2Scaling);
+        }
+        else if (abl2Stat == "intelligence") {
+            abl2Damage = Number(abl2Damage) + ((fighter1Intelligence - abl2ScalingReq) * abl2Scaling);
+        }
+        else if (abl2Stat == "charisma") {
+            abl2Damage = Number(abl2Damage) + ((fighter1Charisma - abl2ScalingReq) * abl2Scaling);
+        }
+
+        //fighter 1 skill 3
+        document.getElementById("skill3").innerHTML = dueler1.skillThree.skillName;
+        document.getElementById("abl3Desc").innerHTML = dueler1.skillThree.description;
+        abl3healing = dueler1.skillThree.healing;
+        abl3Damage = dueler1.skillThree.damage;
+        abl3Stat = dueler1.skillThree.damageStatType;
+        abl3Scaling = dueler1.skillThree.scaledDamage;
+        abl3ScalingReq = dueler1.skillThree.scalingRequirement;
+        abl3ManaCost = dueler1.skillThree.manaCost;
+        if (abl3Stat == "strength") {
+            abl3Damage = Number(abl3Damage) + ((fighter1Strength - abl3ScalingReq) * abl3Scaling);
+        }
+        else if (abl3Stat == "dexterity") {
+            abl3Damage = Number(abl3Damage) + ((fighter1Dexterity - abl3ScalingReq) * abl3Scaling);
+        }
+        else if (abl3Stat == "constitution") {
+            abl3Damage = Number(abl3Damage) + ((fighter1Constitution - abl3ScalingReq) * abl3Scaling);
+        }
+        else if (abl3Stat == "wisdom") {
+            abl3Damage = Number(abl3Damage) + ((fighter1Wisdom - abl3ScalingReq) * abl3Scaling);
+        }
+        else if (abl3Stat == "intelligence") {
+            abl3Damage = Number(abl3Damage) + ((fighter1Intelligence - abl3ScalingReq) * abl3Scaling);
+        }
+        else if (abl3Stat == "charisma") {
+            abl3Damage = Number(abl3Damage) + ((fighter1Charisma - abl3ScalingReq) * abl3Scaling);
+        }
+
+    });
+
 
 //fighter 2 core elements
 document.getElementById("maxHealth2").innerHTML = 65;
@@ -227,6 +266,7 @@ function basicAttack() {
         if ((curhp - Math.floor(fighter1Strength / 2)) < 0) {
             document.getElementById("health2").innerHTML = 0;
             onWin();
+            return;
         } else {
             document.getElementById("health2").innerHTML -= Math.floor(fighter1Strength / 2);
         }
@@ -271,6 +311,7 @@ function abl1() {
                     document.getElementById("health2").innerHTML = 0;
                     document.getElementById("mana1").innerHTML -= abl1ManaCost;
                     onWin();
+                    return;
                 } else {
                     document.getElementById("health2").innerHTML -= abl1Damage;
                     document.getElementById("mana1").innerHTML -= abl1ManaCost;
@@ -322,6 +363,7 @@ function abl2() {
                     document.getElementById("health2").innerHTML = 0;
                     document.getElementById("mana1").innerHTML -= abl2ManaCost;
                     onWin();
+                    return;
                 } else {
                     document.getElementById("health2").innerHTML -= abl2Damage;
                     document.getElementById("mana1").innerHTML -= abl2ManaCost;
@@ -373,6 +415,7 @@ function abl3() {
                     document.getElementById("health2").innerHTML = 0;
                     document.getElementById("mana1").innerHTML -= abl3ManaCost;
                     onWin();
+                    return;
                 } else {
                     document.getElementById("health2").innerHTML -= abl3Damage;
                     document.getElementById("mana1").innerHTML -= abl3ManaCost;

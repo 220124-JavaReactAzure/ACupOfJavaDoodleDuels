@@ -40,8 +40,12 @@ fetch("https://java-doodle-duels.azurewebsites.net/getSkills", {
       let newDiv = document.createElement("div");
       let newH4 = document.createElement("H4");
       let newP = document.createElement("p");
-      let skillNameText = document.createTextNode(skills.allSkills[k].skillName);
-      let skillDescText = document.createTextNode(skills.allSkills[k].description);
+      let skillNameText = document.createTextNode(
+        skills.allSkills[k].skillName
+      );
+      let skillDescText = document.createTextNode(
+        skills.allSkills[k].description
+      );
 
       switch (skills.allSkills[k].damageStatType) {
         case "strength":
@@ -223,6 +227,7 @@ function postDueler() {
       })
       .then(function (response) {
         if (response.status === 201) {
+          alert("Your new dueler has been created!");
           window.location.replace(
             "https://javadoodleduels.blob.core.windows.net/$web/homepage.html"
           );
