@@ -1,5 +1,6 @@
 package com.revature.JavaDoodleDuels.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,15 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_info")
-public class Dueler {
+@Table(name="dueler_info")
+public class Dueler implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6483224865362138449L;
+
 	@Id
 	@Column(name="dueler_name")
 	private String duelerName;
 	
 	@Column(name="account_number")
-	private long accountNumer;   // used to get called by user
+	private String accountNumber;   // used to get called by user
 	
 	@Column(name="dueler_image")
 	private String duelerImage;   // not sure if this will work
@@ -39,6 +45,12 @@ public class Dueler {
 	@Column
 	private int charisma;
 	
+	@Column(name="max_health")
+	private int maxHealth;
+	
+	@Column(name="max_mana")
+	private int maxMana;
+	
 	@Column(name="skill_one")
 	private String skillOne;  // used to call skill table
 	
@@ -55,12 +67,12 @@ public class Dueler {
 		super();
 	}
 	
-	public Dueler(String duelerName, long accountNumer, String duelerImage, int strength, int dexterity,
-			int constitution, int wisdom, int intelligence, int charisma, String skillOne, String skillTwo,
+	public Dueler(String duelerName, String accountNumber, String duelerImage, int strength, int dexterity,
+			int constitution, int wisdom, int intelligence, int charisma, int maxHealth, int maxMana, String skillOne, String skillTwo,
 			String skillThree, boolean isDummy) {
 		super();
 		this.duelerName = duelerName;
-		this.accountNumer = accountNumer;
+		this.accountNumber = accountNumber;
 		this.duelerImage = duelerImage;
 		this.strength = strength;
 		this.dexterity = dexterity;
@@ -68,6 +80,8 @@ public class Dueler {
 		this.wisdom = wisdom;
 		this.intelligence = intelligence;
 		this.charisma = charisma;
+		this.maxHealth = maxHealth;
+		this.maxMana = maxMana;
 		this.skillOne = skillOne;
 		this.skillTwo = skillTwo;
 		this.skillThree = skillThree;
@@ -82,12 +96,12 @@ public class Dueler {
 		this.duelerName = duelerName;
 	}
 
-	public long getAccountNumer() {
-		return accountNumer;
+	public String getAccountNumber() {
+		return accountNumber;
 	}
 
-	public void setAccountNumer(long accountNumer) {
-		this.accountNumer = accountNumer;
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public String getDuelerImage() {
@@ -146,6 +160,22 @@ public class Dueler {
 		this.charisma = charisma;
 	}
 
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
+	}
+
+	public int getMaxMana() {
+		return maxMana;
+	}
+
+	public void setMaxMana(int maxMana) {
+		this.maxMana = maxMana;
+	}
+
 	public String getSkillOne() {
 		return skillOne;
 	}
@@ -180,7 +210,7 @@ public class Dueler {
 
 	@Override
 	public String toString() {
-		return "Dueler [duelerName=" + duelerName + ", accountNumer=" + accountNumer + ", duelerImage=" + duelerImage
+		return "Dueler [duelerName=" + duelerName + ", accountNumber=" + accountNumber + ", duelerImage=" + duelerImage
 				+ ", strength=" + strength + ", dexterity=" + dexterity + ", constitution=" + constitution + ", wisdom="
 				+ wisdom + ", intelligence=" + intelligence + ", charisma=" + charisma + ", skillOne=" + skillOne
 				+ ", skillTwo=" + skillTwo + ", skillThree=" + skillThree + ", isDummy=" + isDummy + "]";
@@ -188,7 +218,7 @@ public class Dueler {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(accountNumer, charisma, constitution, dexterity, duelerImage, duelerName, intelligence,
+		return Objects.hash(accountNumber, charisma, constitution, dexterity, duelerImage, duelerName, intelligence,
 				isDummy, skillOne, skillThree, skillTwo, strength, wisdom);
 	}
 
@@ -201,7 +231,7 @@ public class Dueler {
 		if (getClass() != obj.getClass())
 			return false;
 		Dueler other = (Dueler) obj;
-		return accountNumer == other.accountNumer && charisma == other.charisma && constitution == other.constitution
+		return accountNumber == other.accountNumber && charisma == other.charisma && constitution == other.constitution
 				&& dexterity == other.dexterity && Objects.equals(duelerImage, other.duelerImage)
 				&& Objects.equals(duelerName, other.duelerName) && intelligence == other.intelligence
 				&& isDummy == other.isDummy && Objects.equals(skillOne, other.skillOne)

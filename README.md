@@ -1,7 +1,7 @@
 # **Java Doodle Duels** 
 
 ## **Description** 
-Java Doodle Duels is a web based character battler application made in Java Spring by the Cup of Java team at Revature. Using Azure SQL and Spring Data we will be able to hold any doodle duelers created by our users. These duelers will have a full stat breakdowns based on the classic six Dungeon & Dragons stats, which will determine the maximum Life Points, Ability Points, and Skills the dueler can use. 
+Java Doodle Duels is a web-based character battler application made in Java with Spring Boot. Using Azure SQL and Spring Data JPA we will be able to hold any doodle duelers created by our users. These duelers will have a full stat breakdowns based on the classic six Dungeon & Dragons stats, which will determine the maximum Life Points, Ability Points, and Skills the dueler can use. Our website leverages HTML, CSS and JavaScript to help have fun interactive battles between different duelers across the web all statically hosted on Azure Blob Storage. Our REST API is deployed using Azure Pipelines CI/CD.
 
 ----------------
 
